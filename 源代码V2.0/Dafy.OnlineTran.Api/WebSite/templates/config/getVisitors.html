@@ -1,0 +1,160 @@
+<div class="panel self-panel">
+	<div class="panel-heading">
+		查询条件
+	</div>
+	<div class="panel-body">
+		<div class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="firstname" class="col-md-1 control-label">工号</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="parm.userId" />
+				</div>
+				<label for="firstname" class="col-md-1 control-label">省份</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="parm.province" />
+				</div>
+				<label for="firstname" class="col-md-1 control-label">城市</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="parm.city" />
+				</div>
+
+				<div class="col-md-3">
+					<button class="btn btn-primary" ng-click="getVisitors()"> 
+			          <span class="glyphicon glyphicon-search"></span>搜索 
+			       </button>
+					<button class="btn btn-success" ng-click="editVisitors(-1)">
+			          <span class="glyphicon glyphicon-plus"></span>新增
+			        </button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel self-panel">
+	<div class="panel-heading">
+		催收员列表
+	</div>
+	<div class="panel-body scroll">
+		<table class="table table-striped table-bordered table-hover dataTable no-footer" dw-loading="getVisitors" dw-loading-options="{active: true,text: '数据加载中，请稍后...',spinnerOptions: {color: '#00C4CA'}}">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>姓名</th>
+					<th>工号</th>
+					<th>省份</th>
+					<th>城市</th>
+					<th>区域</th>
+					<th>备选区域</th>
+					<th>案件上限</th>
+					<th>创建人</th>
+					<th>创建时间</th>
+					<th>修改人</th>
+					<th>修改时间</th>
+					<th style="width: 150px;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in getVisitorsList">
+					<td>{{$index+1}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.userId}}</td>
+					<td>{{item.province}}</td>
+					<td>{{item.city}}</td>
+					<td>{{item.belongArea}}</td>
+					<td>{{item.reserveArea}}</td>
+					<td>{{item.maxCase}}</td>
+					<td>{{item.createUser}}</td>
+					<td>{{item.createTime | date:'yyyy-MM-dd hh:mm'}}</td>
+					<td>{{item.updateUser}}</td>
+					<td>{{item.updateTime | date:'yyyy-MM-dd hh:mm'}}</td>
+					<td>
+						<button class="btn btn-primary btn-sm" ng-click="editVisitors($index)">编辑 <span class="glyphicon glyphicon-pencil"></span> </button>
+						<button mwl-confirm class="btn btn-danger btn-sm" ng-click="delVisitors(item.id)">删除 <span class="glyphicon glyphicon-remove"></span> </button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!--描述：分页事件-->
+		<div class="pull-right">
+			<ul uib-pagination boundary-links="true" max-size="10" items-per-page="parm.pageSize" total-items="totalItems" ng-change="pageChanged()" ng-model="parm.pageIndex" class="pagination-sm" previous-text="上一页" next-text="下一页" boundary-link-numbers="true" first-text="第一页" last-text="最后一页"></ul>
+		</div>
+	</div>
+</div>
+
+<!--
+	描述：新增催收员
+-->
+<script type="text/ng-template" id="visitorsAdd.html">
+	<div class="modal-body">
+		<form class="form-horizontal" role="form" name="myForm" ng-submit="ok()" novalidate>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">工号</label>
+				<div class="col-sm-8">
+					<input type="text" maxlength="10" class="form-control" placeholder="请输入工号" ng-model="visitorItem.userId" required>
+				</div>
+				<label class="control-label" style="color: red;">*</label>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">姓名</label>
+				<div class="col-sm-8">
+					<input type="text" maxlength="50" class="form-control" placeholder="请输入姓名" ng-model="visitorItem.name" required>
+				</div>
+				<label class="control-label" style="color: red;">*</label>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">省份</label>
+				<div class="col-sm-8">
+					<select class="form-control" id="provinces" ng-change="getCitys()" ng-model="visitorItem.province" required>
+						<option value="">请选择</option>
+						<option ng-repeat="option in provinceList" value="{{option.name}}" ng-selected="option.name == visitorItem.province">{{option.name}}</option>
+					</select>
+				</div>
+				<label class="control-label" style="color: red;">*</label>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">城市</label>
+				<div class="col-sm-8">
+					<select class="form-control" id="citys" ng-change="getRegions()" ng-model="visitorItem.city" required>
+						<option value="">请选择</option>
+						<option ng-repeat="option in cityList" value="{{option.name}}" ng-selected="option.name == visitorItem.city">{{option.name}}</option>
+					</select>
+				</div>
+				<label class="control-label" style="color: red;">*</label>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">区域</label>
+				<div class="col-sm-8">
+					<select class="form-control" id="regions" ng-model="visitorItem.belongArea" required>
+						<option value="">请选择</option>
+						<option ng-repeat="option in regionList" value="{{option.name}}" ng-selected="option.name == visitorItem.belongArea">{{option.name}}</option>
+					</select>
+				</div>
+				<label class="control-label" style="color: red;">*</label>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">备选区域</label>
+				<div class="col-sm-8">
+					<select class="form-control" id="regions" ng-model="visitorItem.reserveArea">
+						<option value="">请选择</option>
+						<option ng-repeat="option in regionList" value="{{option.name}}" ng-selected="option.name == visitorItem.reserveArea">{{option.name}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">案件上限</label>
+				<div class="col-sm-8">
+					<input type="text" maxlength="50" class="form-control" placeholder="请输入案件上限（数字）" ng-model="visitorItem.maxCase" ng-pattern="/^[0-9]+$/" required>
+				</div>
+				<label class="control-label" style="color: red;">*</label>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="ok()">
+                      保存
+      </button>
+		<button class="btn btn-warning" ng-click="cancel()">取消</button>
+	</div>
+	</form>
+</script>

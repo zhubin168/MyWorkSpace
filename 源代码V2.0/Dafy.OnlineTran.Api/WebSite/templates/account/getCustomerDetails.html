@@ -1,0 +1,65 @@
+<div><button type="button" class="btn btn-default" ng-click="goList();">返回</button></div>
+<div class="panel self-panel">
+	<div class="panel-heading">
+		查询条件
+	</div>
+	<div class="panel-body">
+		<div class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="firstname" class="col-md-1 control-label">搜索词</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="parm.paraName" placeholder="输入客户的电话或姓名" />
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-primary" ng-click="detailCustomer()"> 
+			          <span class="glyphicon glyphicon-search"></span>搜索 
+			     </button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel self-panel">
+	<div class="panel-heading">
+		理财师：{{selectedItem.username}} {{selectedItem.telphone}} 的团队
+	</div>
+	<div class="panel-body scroll">
+		<table class="table table-striped table-bordered table-hover dataTable no-footer">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>名称</th>
+					<th>电话</th>
+					<th>证件号</th>
+					<td>来源</th>
+					<th>绑定时间</th>
+					<th>总投资额（元）</th>
+					<th>投资笔数</th>
+					<th>在投总额（元）</th>
+					<th>在投笔数</th>
+					<th>贡献佣金</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in getUsersList">
+					<td>{{$index+1}}</td>
+					<td>{{item.username}}</td>
+					<td>{{item.telePhone}}</td>
+					<td>{{item.ident}}</td>
+					<td>{{item.resource=='w'?'微信':'PC'}}</td>
+					<td>{{item.bindDate | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+					<td>{{item.nums1}}</td>
+					<td>{{item.nums2}}</td>
+					<td>{{item.nums3}}</td>
+					<td>{{item.nums4}}</td>
+					<td>{{item.nums5}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<!--描述：分页事件-->
+		<div class="pull-right">
+			<ul uib-pagination boundary-links="true" max-size="10" items-per-page="parm.pageSize" total-items="totalItems" ng-change="pageChanged()" ng-model="parm.pageIndex" class="pagination-sm" previous-text="上一页" next-text="下一页" boundary-link-numbers="true" first-text="第一页" last-text="最后一页"></ul>
+		</div>
+	</div>
+</div>

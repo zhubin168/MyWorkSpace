@@ -1,0 +1,72 @@
+<!--
+	描述：新增获客助手
+-->
+			<div class="modal-body">
+				<div class="form-group">
+					<button class="btn btn-warning" ng-click="goBack()">返回</button>
+				</div>
+				<form class="form-horizontal" role="form" name="myForm"  ng-submit="ok(1)" novalidate>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">图片主题</label>
+						<div class="col-sm-8">
+							<input type="text" maxlength="50" class="form-control" placeholder="请输入标题" ng-model="configItem.title" required>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">图片类别</label>
+						<div class="col-sm-8">
+							<select class="form-control" ng-model="configItem.type" required>
+									  <option value="">全部类型</option>
+								      <option value="1">座右铭</option>
+								      <option value="2">节日问候</option>
+								      <option value="3">理财产品</option>
+								      <option value="4">诗和远方</option>
+							</select>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+					 <div class="form-group">
+						<label class="col-sm-2 control-label">图片</label>
+						<div class="col-sm-8">
+							<div class="image-box ub ub-ac text-center ub-pc" dw-loading="upLoadTrainImg" dw-loading-options="{active: false,text: '正在上传图片，请稍后...',spinnerOptions: {color: '#00C4CA'}}">
+		        			 <input onchange="angular.element(this).scope().uploadImg(this.files,'imageUrl')" ngf-select ng-model="file" name="file"  ngf-max-size="20MB" type="file" accept="image/*" image="image1" name="image1" />
+		        			        			 
+		        		</div>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+					<div class="form-group">
+			         	<div class="col-md-10 col-md-offset-2">
+			         	<img src="{{imageUrl}}" height="74" width="92" />
+			            </div>
+			         </div>
+			         
+					<div class="form-group">
+						<label class="col-sm-2 control-label">显示排序</label>
+						<div class="col-sm-8">
+							<input type="text" maxlength="50" class="form-control" placeholder="请输入排序" ng-model="configItem.sequence"  required>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+				   <div class="form-group">
+						<label class="col-sm-2 control-label">发布时间</label>
+						<div class="col-sm-8">
+							<label class="radio-inline">
+							<input name="display" type="radio" value="true" ng-model="sendTimeStatus" required>即时发布
+							</label>
+							<label class="radio-inline">
+							<input name="display" type="radio" value="false" ng-model="sendTimeStatus">定时发布</label>
+							<input type="text" maxlength="50" ng-disabled="sendTimeStatus=='true'" class="form-control" placeholder="请输入发布时间" ng-model="configItem.publishTime">
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="ok(1)">
+                      保存
+      			</button>
+				<button class="btn btn-warning" ng-click="ok(0)">存草稿</button>
+			</div>
+		</form>

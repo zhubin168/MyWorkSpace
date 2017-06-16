@@ -1,0 +1,43 @@
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" type="text/css" href="css/account/login.css"/>
+
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 form-box" style="margin-left:28%;">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>尚融汇-后台系统登录</h3>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-lock"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form  class="login-form" dw-loading="loginLoad" dw-loading-options="{active: false,text: '数据加载中，请稍后...',spinnerOptions: {color: '#00C4CA'}}">
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="form-username">Username</label>
+			                        	<input type="text" name="form-username" ng-model="user.userId" placeholder="请输入工号" class="form-username form-control" id="form-username">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-password">Password</label>
+			                        	<input type="password" name="form-password" placeholder="请输入登录密码" ng-model="user.password" class="form-password form-control" id="form-password">
+			                        </div>
+			                        <div class="form-group text-right">
+			                            <a href="#/forgetPwd">忘记密码</a>
+			                        </div>
+			                        <button class="btn bg-default" ng-click="login(user)">登录</button>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>

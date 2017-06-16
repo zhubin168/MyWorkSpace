@@ -1,0 +1,139 @@
+<div class="modal-body">
+		<div style="width: 100%; margin: 5px auto;">
+			<div class="check_box">
+				<h1>
+                <label>
+                              基本信息
+                </label>
+            </h1>
+				<div id="divPart_1" class="info_box">
+					<h2></h2>
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td style="position: relative;">
+								<table cellpadding="0" cellspacing="0" class="form_list" style="background:none;border-bottom:none;border-top:none;">
+									<tr>
+										<td style="background-color:none;width: 100%;">
+											<div id="imgPreview" class="pic right">
+												<img src="{{configItem.headimgurl}}" width="160" height="160" />
+											</div>
+											<table cellpadding="0" cellspacing="0" border="0" class="left">
+												<tr>
+													<td style="width: 500px;">
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">用户ID：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.id}}</label>
+														</div>
+														<br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">姓名：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.username}}</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">昵称：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.nickname}}</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">手机号：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.telePhone}}</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">职级：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.telePhone}}</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">是否有任务津贴：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">
+																是 &nbsp;<span class="glyphicon glyphicon-pencil" style="cursor: pointer;" title="编辑"></span> 
+															</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">所属理财师姓名：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.username}}</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label">所属理财师电话：</label>
+															<label class="col-sm-6 control-label" style="font-weight: normal;">{{configItem.telePhone}}</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">注册时间：</label>
+															<label class="col-sm-6 control-label" style="font-weight: normal;">2017-05-01 22:10:50</label>
+														</div><br><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">最后一次登录时间：</label>
+															<label class="col-sm-6 control-label" style="font-weight: normal;">2017-05-09 22:10:50</label>
+														</div>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<table class="table table-bordered">
+			<h4>银行卡信息</h4><button class="btn btn-primary btn-sm" ng-click=""> <span class="glyphicon glyphicon-pencil">编辑</span> </button>
+			<tr>
+				<th>身份证</th>
+				<td ng-bind="configItem.ident"></td>
+			</tr>
+			<tr>
+				<th>银行卡</th>
+				<td ng-bind="configItem.cardNo"></td>
+			</tr>
+			<tr>
+				<th>开户行</th>
+				<td ng-bind="configItem.bankName"></td>
+			</tr>
+		</table>
+
+		<table class="table table-bordered">
+			<h4>关系信息</h4><button class="btn btn-primary btn-sm" ng-click=""> <span class="glyphicon glyphicon-pencil">编辑</span> </button>
+			<tr>
+				<th>上级理财师</th>
+				<td ng-bind="configItem.username"></td>
+			</tr>
+		</table>
+		<table class="table table-bordered">
+			<h4>操作记录</h4>
+			<tr>
+				<th>上级账号</th>
+				<th>上级姓名</th>
+				<th>绑定时间</th>
+				<th>解绑时间</th>
+			</tr>
+			<tr>
+				<td ng-bind="configItem.id"></td>
+				<td ng-bind="configItem.username"></td>
+				<td>2017-05-09 23:00:00</td>
+				<td>2017-05-09 23:00:00</td>
+			</tr>
+		</table>
+
+		<table class="table table-bordered">
+			<h4>所属机构</h4><button class="btn btn-primary btn-sm" ng-click=""> <span class="glyphicon glyphicon-pencil">编辑</span> </button>
+			<tr>
+				<th>机构名称</th>
+				<td ng-bind="configItem.company"></td>
+			</tr>
+			<tr>
+				<th>所在城市</th>
+				<td ng-bind="configItem.compCity"></td>
+			</tr>
+			<tr>
+				<th>部门</th>
+				<td ng-bind="configItem.department"></td>
+			</tr>
+			<tr>
+				<th>职位</th>
+				<td ng-bind="configItem.position"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-warning" ng-click="searchMyOrder()">查看预约信息</button>
+	</div>

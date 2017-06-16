@@ -1,0 +1,278 @@
+<div><button type="button" class="btn btn-default" ng-click="goList();">返回</button></div>
+<div class="panel self-panel marBottom0  ng-scope">
+	<div class="panel-heading ">
+		<div class="row">
+			<div class="col-lg-4 left">
+				理财师详情
+			</div>
+			<div class="col-lg-8 left">
+
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="panel self-panel marBottom0">
+			<div class="panel-heading">
+				基本信息
+			</div>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<td>
+							<table cellpadding="0" cellspacing="0" class="form_list" style="background:none;border-bottom:none;border-top:none;">
+								<tr>
+									<td style="background-color:none;width: 100%;">
+										<div id="imgPreview" class="pic right">
+											<img src="{{configItem.headimgurl}}" width="160" height="160" />
+										</div>
+										<table cellpadding="0" cellspacing="0" border="0" class="left">
+											<tr>
+												<td style="width: 500px;text-align: left !important;">
+													<div class="form-group">
+														<label class="col-sm-4 control-label left">用户ID：</label>
+														<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.id}}</label>
+													</div>
+													<br>
+													<div class="form-group">
+														<label class="col-sm-4 control-label left">姓名：</label>
+														<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.username}}</label>
+													</div><br>
+													<div class="form-group">
+														<label class="col-sm-4 control-label left">昵称：</label>
+														<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.nickname}}</label>
+													</div><br>
+													<div class="form-group">
+														<label class="col-sm-4 control-label left">手机号：</label>
+														<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.telePhone}}</label>
+													</div><br>
+													<div class="form-group">
+														<label class="col-sm-4 control-label left">职级：</label>
+														<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.rank}}</label>
+													</div><br>
+													<div class="form-group">
+														<label class="col-sm-4 control-label left">是否有任务津贴：</label>
+														<label class="col-sm-6 control-label left" style="font-weight: normal;">
+																{{configItem.isHasAllowance==1?"是":"否"}} &nbsp;<span class="glyphicon glyphicon-pencil" style="cursor: pointer;" title="编辑" ng-click="isHasAllowance(configItem.id,configItem.username,configItem.telePhone,configItem.isHasAllowance)"></span> 
+															</label>
+													</div><br>
+													<div class="form-group">
+														<label class="col-sm-4 control-label left">所属理财师姓名：</label>
+														<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.pUsername}}</label>
+													</div><br>
+													<div class="form-group">
+														<label class="col-sm-4 control-label">所属理财师电话：</label>
+														<label class="col-sm-6 control-label" style="font-weight: normal;">{{configItem.pTelePhone}}</label>
+													</div><br>
+													<div class="form-group">
+														<label class="col-sm-4 control-label left">注册时间：</label>
+														<label class="col-sm-6 control-label" style="font-weight: normal;">{{configItem.registerTime | date:'yyyy-MM-dd hh:mm:ss'}}</label>
+													</div><br>
+													<div class="form-group">
+														<label class="col-sm-4 control-label left">最后一次登录时间：</label>
+														<label class="col-sm-6 control-label" style="font-weight: normal;">{{configItem.logTime | date:'yyyy-MM-dd hh:mm:ss'}}</label>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<Td>
+										<hr>
+									</Td>
+								</tr>
+				</tbody>
+				</table>
+		</div>
+	</div>
+</div>
+<div class="panel-heading left" style="border: 1px;font-weight: bold;">
+	银行卡信息
+</div>
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th style="vertical-align: middle;">身份证</th>
+			<td class="ng-binding" ng-bind="configItem.ident"></td>
+			<th style="vertical-align: middle;">银行卡</th>
+			<td class="ng-binding" ng-bind="configItem.cardNo"></td>
+			<th style="vertical-align: middle;">开户行</th>
+			<td class="ng-binding" ng-bind="configItem.bankName"></td>
+			<td style="width: 200px;"><button class="btn btn-primary btn-sm"  ng-click="setBank(configItem.id,configItem.username,configItem.telePhone,configItem.ident,configItem.cardNo,configItem.bankName)"> <span class="glyphicon glyphicon-pencil">编辑</span> </button></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<div class="panel-heading left" style="border: 1px;font-weight: bold;">
+	关系信息
+</div>
+<table class="table table-bordered">
+	<tr>
+		<th style="vertical-align: middle;width: 180px;">上级理财师</th>
+		<td>{{configItem.pUsername}}&nbsp;&nbsp;{{configItem.pTelePhone}}</td>
+		<td style="width: 200px;"><button class="btn btn-primary btn-sm" ng-click="setRelation(configItem.id,configItem.pUsername)"> <span class="glyphicon glyphicon-pencil">编辑</span> </button></td>
+	</tr>
+</table>
+
+<div class="panel-heading left" style="border: 1px;font-weight: bold;">
+	操作记录
+</div>
+<table class="table table-bordered">
+	<tr>
+		<th>上级账号</th>
+		<th>上级姓名</th>
+		<th>绑定时间</th>
+		<th>解绑时间</th>
+	</tr>
+	<tr>
+		<td ng-bind="configItem.id"></td>
+		<td ng-bind="configItem.username"></td>
+		<td>2017-05-09 23:00:00</td>
+		<td>2017-05-09 23:00:00</td>
+	</tr>
+	<tr>
+		<td ng-bind="configItem.id"></td>
+		<td ng-bind="configItem.username"></td>
+		<td>2017-05-09 23:00:00</td>
+		<td>2017-05-09 23:00:00</td>
+	</tr>
+</table>
+
+<div class="panel-heading left" style="border: 1px;font-weight: bold;">
+	所属机构
+</div>
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th style="vertical-align: middle;">机构名称</th>
+			<td class="ng-binding" ng-bind="configItem.company"></td>
+			<th style="vertical-align: middle;">所在城市</th>
+			<td class="ng-binding" ng-bind="configItem.compCity"></td>
+			<th style="vertical-align: middle;">部门</th>
+			<td class="ng-binding" ng-bind="configItem.department"></td>
+			<th style="vertical-align: middle;">职位</th>
+			<td class="ng-binding" ng-bind="configItem.position"></td>
+			<td style="width: 200px;"><button class="btn btn-primary btn-sm" ng-click="setCompany(configItem.id,configItem.username,configItem.telePhone,configItem.companyId)"> <span class="glyphicon glyphicon-pencil">编辑</span> </button></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<div class="modal-footer">
+	<button class="btn btn-warning" ng-click="searchMyOrder()">查看预约信息</button>
+</div>
+</div>
+
+<!--
+	描述：编辑任务津贴
+-->
+	<script type="text/ng-template" id="isHasAllowance.html">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">编辑理财师基本信息</h4>
+        </div>		
+			<div class="modal-body">
+				<p>姓名：{{configItem.username}}</p><br>
+				<p>电话：{{configItem.telePhone}}</p><br><br>
+                <p>是否设置任务津贴：
+                <select ng-model="configItem.isHasAllowance" required>
+                    <option ng-repeat="option in isHasAllowanceList" value="{{option.value}}" ng-selected="option.value == configItem.isHasAllowance">{{option.name}}</option>
+                	<!--<option value=1 ng-selected="option.name == configItem.isHasAllowance">是</option>
+                	<option value=0 ng-selected="option.name == configItem.isHasAllowance">否</option>-->
+                </select>
+                </p>
+                
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" ng-click="ok(configItem.isHasAllowance)">
+                                           保存
+                 </button>
+				<button class="btn btn-warning" ng-click="cancel()">取消</button>
+			</div>
+		</form>
+	</script>
+	
+<!--
+	描述：设置银行卡
+-->
+	<script type="text/ng-template" id="setBank.html">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">编辑理财师基本信息</h4>
+        </div>		
+			<div class="modal-body">
+				<p>姓名：{{configItem.username}}</p><br>
+				<p>电话：{{configItem.telePhone}}</p><br><br>
+                <p>身份证：
+             <input type="text" maxlength="50" class="form-control" ng-model="configItem.ident" required>
+                </p>
+                  <p>银行卡：
+             <input type="text" maxlength="50" class="form-control" ng-model="configItem.cardNo" required>
+                </p>
+                  <p>开户行：
+             <input type="text" maxlength="50" class="form-control" ng-model="configItem.bankName" required>
+                </p>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" ng-click="ok(configItem.ident,configItem.cardNo,configItem.bankName)">
+                                           保存
+                 </button>
+				<button class="btn btn-warning" ng-click="cancel()">取消</button>
+			</div>
+		</form>
+	</script>
+	
+<!--
+	描述：设置上级信息
+-->
+	<script type="text/ng-template" id="setRelation.html">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">更改上级</h4>
+        </div>		
+			<div class="modal-body">
+				<p>是否确认绑定?</p><br><br>
+                <p>指定新上级：
+             <input type="text" maxlength="50" class="form-control" ng-model="configItem.pUsername" required>
+                </p>
+                  <p><br>
+                  	<input type="radio" ng-model="configItem.pUsername" value="">变为一级理财师：
+               </p>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" ng-click="ok(configItem.ident,configItem.cardNo,configItem.bankName)">
+                                           保存
+                 </button>
+				<button class="btn btn-warning" ng-click="cancel()">取消</button>
+			</div>
+		</form>
+	</script>
+	
+<!--
+	描述：设置机构信息
+-->
+	<script type="text/ng-template" id="setCompany.html">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">理财师机构修改</h4>
+        </div>		
+			<div class="modal-body">
+				<p>姓名：{{configItem.username}}</p><br>
+				<p>电话：{{configItem.telePhone}}</p><br><br>
+                <p>机构名称：
+             <input type="text" maxlength="50" class="form-control" ng-model="configItem.companyId" required>
+                </p>
+                  <p>所在城市：
+             <input type="text" maxlength="50" class="form-control" ng-model="configItem.companyId" required>
+                </p>
+                  <p>部门：
+             <input type="text" maxlength="50" class="form-control" ng-model="configItem.companyId" required>
+                </p>
+                  <p>职位：
+             <input type="text" maxlength="50" class="form-control" ng-model="configItem.companyId" required>
+                </p>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" ng-click="ok(configItem.ident,configItem.cardNo,configItem.bankName)">
+                                           保存
+                 </button>
+				<button class="btn btn-warning" ng-click="cancel()">取消</button>
+			</div>
+		</form>
+	</script>

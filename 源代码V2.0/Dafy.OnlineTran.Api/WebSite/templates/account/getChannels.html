@@ -1,0 +1,224 @@
+<div class="panel self-panel">
+	<div class="panel-heading">
+		查询条件
+	</div>
+	<div class="panel-body">
+		<div class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="firstname" class="col-md-1 control-label">搜索词</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="parm.paraName" placeholder="输入电话或姓名" />
+				</div>
+				<label for="firstname" class="col-md-1 control-label">机构名称</label>
+				<div class="col-md-2">
+					<select class="form-control" ng-model="parm.paraName">
+						<option value="">请选择机构名称</option>
+					</select>-
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-primary" ng-click="getUsers()"> 
+			          <span class="glyphicon glyphicon-search"></span>搜索 
+			      </button>
+					<button class="btn btn-success" ng-click="saveProducts(-1)">
+			          <span class="glyphicon glyphicon-plus"></span>导入渠道
+			        </button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel self-panel">
+	<div class="panel-heading">
+		渠道管理
+	</div>
+	<div class="panel-body scroll">
+		<table class="table table-striped table-bordered table-hover dataTable no-footer" dw-loading="getUsers" dw-loading-options="{active: true,text: '数据加载中，请稍后...',spinnerOptions: {color: '#00C4CA'}}">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>ID</th>
+					<th>姓名</th>
+					<th>昵称</th>
+					<th>电话</th>
+					<th>所属机构</th>
+					<td>上级理财师</th>
+					<th>上级电话</th>
+					<th>名下客户数</th>
+					<th>团队人数</th>
+					<th style="width: 60px;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in getUsersList">
+					<td>{{$index+1}}</td>
+					<td>{{item.id}}</td>
+					<td>{{item.username}}</td>
+					<td>{{item.nickname}}</td>
+					<td>{{item.telePhone}}</td>
+					<td>达飞金融</td>
+					<td>{{item.pUsername}}</td>
+					<td>{{item.pTelePhone}}</td>
+					<td><a style="cursor: pointer;" ng-click="detailCustomer()">100</a></td>
+					<td><a style="cursor: pointer;" ng-click="detailTeam()">100</a></td>
+					<td>
+						<button class="btn btn-primary btn-sm" ng-click="saveUsers($index)">详情 <span class="glyphicon glyphicon-pencil"></span> </button>
+					</td>
+					<!--<td>
+					    <button mwl-confirm class="btn btn-danger btn-sm" ng-click="delUsers(item.id)">删除 <span class="glyphicon glyphicon-remove"></span> </button>
+					</td>-->
+				</tr>
+			</tbody>
+		</table>
+		<!--描述：分页事件-->
+		<div class="pull-right">
+			<ul uib-pagination boundary-links="true" max-size="10" items-per-page="parm.pageSize" total-items="totalItems" ng-change="pageChanged()" ng-model="parm.pageIndex" class="pagination-sm" previous-text="上一页" next-text="下一页" boundary-link-numbers="true" first-text="第一页" last-text="最后一页"></ul>
+		</div>
+	</div>
+</div>
+<!--
+	描述：设置理财师信息
+-->
+<script type="text/ng-template" id="saveUsers.html">	
+<div class="modal-body">
+		<div style="width: 100%; margin: 5px auto;">
+			<div class="check_box">
+				<h1>
+                <label>
+                              基本信息
+                </label>
+            </h1>
+				<div id="divPart_1" class="info_box">
+					<h2></h2>
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td style="position: relative;">
+								<table cellpadding="0" cellspacing="0" class="form_list" style="background:none;border-bottom:none;border-top:none;">
+									<tr>
+										<td style="background-color:none;width: 100%;">
+											<div id="imgPreview" class="pic right">
+												<img src="{{configItem.headimgurl}}" width="160" height="160" />
+											</div>
+											<table cellpadding="0" cellspacing="0" border="0" class="left">
+												<tr>
+													<td style="width: 500px;">
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">用户ID：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.id}}</label>
+														</div>
+														<br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">姓名：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.username}}</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">昵称：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.nickname}}</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">手机号：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.telePhone}}</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">职级：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.telePhone}}</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">是否有任务津贴：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">
+																是 &nbsp;<span class="glyphicon glyphicon-pencil" style="cursor: pointer;" title="编辑"></span> 
+															</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">所属理财师姓名：</label>
+															<label class="col-sm-6 control-label left" style="font-weight: normal;">{{configItem.username}}</label>
+													</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label">所属理财师电话：</label>
+															<label class="col-sm-6 control-label" style="font-weight: normal;">{{configItem.telePhone}}</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">注册时间：</label>
+															<label class="col-sm-6 control-label" style="font-weight: normal;">2017-05-01 22:10:50</label>
+														</div><br>
+														<div class="form-group">
+															<label class="col-sm-4 control-label left">最后一次登录时间：</label>
+															<label class="col-sm-6 control-label" style="font-weight: normal;">2017-05-09 22:10:50</label>
+														</div>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<table class="table table-bordered">
+			<h4>银行卡信息</h4><button class="btn btn-primary btn-sm" ng-click=""> <span class="glyphicon glyphicon-pencil">编辑</span> </button>
+			<tr>
+				<th>身份证</th>
+				<td ng-bind="configItem.ident"></td>
+			<!--</tr>
+			<tr>-->
+				<th>银行卡</th>
+				<td ng-bind="configItem.cardNo"></td>
+			</tr>
+			<tr>
+				<th>开户行</th>
+				<td ng-bind="configItem.bankName"></td>
+				<th></th>
+				<td></td>
+			</tr>
+		</table>
+
+		<table class="table table-bordered">
+			<h4>关系信息</h4><button class="btn btn-primary btn-sm" ng-click=""> <span class="glyphicon glyphicon-pencil">编辑</span> </button>
+			<tr>
+				<th>上级理财师</th>
+				<td ng-bind="configItem.username"></td>
+			</tr>
+		</table>
+		<table class="table table-bordered">
+			<h4>操作记录</h4>
+			<tr>
+				<th>上级账号</th>
+				<th>上级姓名</th>
+				<th>绑定时间</th>
+				<th>解绑时间</th>
+			</tr>
+			<tr>
+				<td ng-bind="configItem.id"></td>
+				<td ng-bind="configItem.username"></td>
+				<td>2017-05-09 23:00:00</td>
+				<td>2017-05-09 23:00:00</td>
+			</tr>
+		</table>
+
+		<table class="table table-bordered">
+			<h4>所属机构</h4><button class="btn btn-primary btn-sm" ng-click=""> <span class="glyphicon glyphicon-pencil">编辑</span> </button>
+			<tr>
+				<th>机构名称</th>
+				<td ng-bind="configItem.company"></td>
+			<!--</tr>
+			<tr>-->
+				<th>所在城市</th>
+				<td ng-bind="configItem.compCity"></td>
+			</tr>
+			<tr>
+				<th>部门</th>
+				<td ng-bind="configItem.department"></td>
+			<!--</tr>
+			<tr>-->
+				<th>职位</th>
+				<td ng-bind="configItem.position"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-warning" ng-click="searchMyOrder()">查看预约信息</button>
+	</div>
+</script>

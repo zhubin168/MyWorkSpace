@@ -1,0 +1,1117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{530412D5-9FC8-4B35-9F27-3814AA06B529}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dafy.OnlineTran.Api</RootNamespace>
+    <AssemblyName>Dafy.OnlineTran.Api</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Dafy.OnlineTran.Api.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Dafy.OnlineTran.Api.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutofacAndWeb.1.0.0\lib\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.SignalR, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutofacAndSignalR.1.0.0\lib\Autofac.Integration.SignalR.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutofacAndWeb.1.0.0\lib\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EFandOracle.1.0.0\lib\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\OAuthComponent.3.0.0\lib\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\OAuthComponent.3.0.0\lib\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\OAuthComponent.3.0.0\lib\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\OAuthComponent.3.0.0\lib\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\OAuthComponent.3.0.0\lib\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\EFandOracle.1.0.0\lib\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\EFandOracle.1.0.0\lib\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\OAuthComponent.3.0.0\lib\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Senparc.Weixin">
+      <HintPath>..\packages\Senparc.Weixin.dll</HintPath>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP">
+      <HintPath>..\packages\Senparc.Weixin.MP.dll</HintPath>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP.MvcExtension">
+      <HintPath>..\packages\Senparc.Weixin.MP.MvcExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.3.2\lib\net40\Swashbuckle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.1.0.0\lib\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="WebSite\app\app.js" />
+    <Content Include="WebSite\app\controllers\account\accountCtr.js" />
+    <Content Include="WebSite\app\controllers\categorys\categorysCtr.js" />
+    <Content Include="WebSite\app\controllers\config\configCtr.js" />
+    <Content Include="WebSite\app\controllers\contract\contractCtrl.js" />
+    <Content Include="WebSite\app\controllers\home\homeCtr.js" />
+    <Content Include="WebSite\app\controllers\product\productCtr.js" />
+    <Content Include="WebSite\app\controllers\tools\toolsCtr.js" />
+    <Content Include="WebSite\app\directive\directives.js" />
+    <Content Include="WebSite\app\filters\filters.js" />
+    <Content Include="WebSite\app\main.js" />
+    <Content Include="WebSite\app\services\account\accountService.js" />
+    <Content Include="WebSite\app\services\auth\authInterceptorService.js" />
+    <Content Include="WebSite\app\services\categorys\categorysService.js" />
+    <Content Include="WebSite\app\services\common\commonService.js" />
+    <Content Include="WebSite\app\services\config\configService.js" />
+    <Content Include="WebSite\app\services\contract\contractService.js" />
+    <Content Include="WebSite\app\services\home\homeService.js" />
+    <Content Include="WebSite\app\services\product\productService.js" />
+    <Content Include="WebSite\app\services\tools\toolsService.js" />
+    <Content Include="WebSite\app\services\upLoadFile\upLoadFileService.js" />
+    <Content Include="WebSite\css\account\account.css" />
+    <Content Include="WebSite\css\account\font-awesome.min.css" />
+    <Content Include="WebSite\css\account\login.css" />
+    <Content Include="WebSite\css\home\authority.css" />
+    <Content Include="WebSite\css\home\home.css" />
+    <Content Include="WebSite\img\home\login-bg.jpg" />
+    <Content Include="WebSite\img\home\login-bg2.jpg" />
+    <Content Include="WebSite\img\home\logo.png" />
+    <Content Include="WebSite\img\home\menu.png" />
+    <Content Include="WebSite\img\home\out.png" />
+    <Content Include="WebSite\img\home\touxiang.png" />
+    <Content Include="WebSite\img\home\train-img2.png" />
+    <Content Include="WebSite\img\home\up.png" />
+    <Content Include="WebSite\index.html" />
+    <Content Include="WebSite\lib\angular-animate\angular-animate.js" />
+    <Content Include="WebSite\lib\angular-animate\angular-animate.min.js" />
+    <Content Include="WebSite\lib\angular-animate\index.js" />
+    <Content Include="WebSite\lib\angular-bindonce\bindonce.js" />
+    <Content Include="WebSite\lib\angular-bindonce\bindonce.min.js" />
+    <Content Include="WebSite\lib\angular-block-ui\dist\angular-block-ui.css" />
+    <Content Include="WebSite\lib\angular-block-ui\dist\angular-block-ui.js" />
+    <Content Include="WebSite\lib\angular-block-ui\dist\angular-block-ui.min.css" />
+    <Content Include="WebSite\lib\angular-block-ui\dist\angular-block-ui.min.js" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\dist\angular-bootstrap-confirm.js" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\dist\angular-bootstrap-confirm.min.js" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\index.html" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\karma.conf.js" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\robots.txt" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\src\angular-bootstrap-confirm.html" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\src\ui-bootstrap-position.js" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\webpack.config.build.js" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\webpack.config.js" />
+    <Content Include="WebSite\lib\angular-bootstrap\.gitignore" />
+    <Content Include="WebSite\lib\angular-bootstrap\bootstrap.min.css" />
+    <Content Include="WebSite\lib\angular-bootstrap\index.js" />
+    <Content Include="WebSite\lib\angular-bootstrap\ui-bootstrap-csp.css" />
+    <Content Include="WebSite\lib\angular-bootstrap\ui-bootstrap-tpls.js" />
+    <Content Include="WebSite\lib\angular-bootstrap\ui-bootstrap-tpls.min.js" />
+    <Content Include="WebSite\lib\angular-bootstrap\ui-bootstrap.js" />
+    <Content Include="WebSite\lib\angular-bootstrap\ui-bootstrap.min.js" />
+    <Content Include="WebSite\lib\angular-css\angular-css.js" />
+    <Content Include="WebSite\lib\angular-css\angular-css.min.js" />
+    <Content Include="WebSite\lib\angular-css\Gruntfile.js" />
+    <Content Include="WebSite\lib\angular-css\LICENSE.txt" />
+    <Content Include="WebSite\lib\angular-lazy-image\img\foo.png" />
+    <Content Include="WebSite\lib\angular-lazy-image\lazy-image-style.css" />
+    <Content Include="WebSite\lib\angular-lazy-image\lazy-image-style.min.css" />
+    <Content Include="WebSite\lib\angular-lazy-image\lazy-image.directive.js" />
+    <Content Include="WebSite\lib\angular-lazy-image\lazy-image.js" />
+    <Content Include="WebSite\lib\angular-lazy-image\lazy-image.min.js" />
+    <Content Include="WebSite\lib\angular-lazy-image\lazy-image.module.js" />
+    <Content Include="WebSite\lib\angular-lazy-image\lazy-image.service.js" />
+    <Content Include="WebSite\lib\angular-loading\.gitignore" />
+    <Content Include="WebSite\lib\angular-loading\angular-loading.css" />
+    <Content Include="WebSite\lib\angular-loading\angular-loading.js" />
+    <Content Include="WebSite\lib\angular-loading\angular-loading.min.js" />
+    <Content Include="WebSite\lib\angular-loading\demo\index.html" />
+    <Content Include="WebSite\lib\angular-loading\Gruntfile.js" />
+    <Content Include="WebSite\lib\angular-loading\tasks\build.js" />
+    <Content Include="WebSite\lib\angular-loading\tasks\default.js" />
+    <Content Include="WebSite\lib\angular-loading\tasks\options\bump.js" />
+    <Content Include="WebSite\lib\angular-loading\tasks\options\jshint.js" />
+    <Content Include="WebSite\lib\angular-loading\tasks\options\shell.js" />
+    <Content Include="WebSite\lib\angular-loading\tasks\options\uglify.js" />
+    <Content Include="WebSite\lib\angular-loading\tasks\options\watch.js" />
+    <Content Include="WebSite\lib\angular-loading\tasks\release.js" />
+    <Content Include="WebSite\lib\angular-locale-zh-cn-master\angular-locale_zh-cn.js" />
+    <Content Include="WebSite\lib\angular-messages\angular-messages.js" />
+    <Content Include="WebSite\lib\angular-messages\angular-messages.min.js" />
+    <Content Include="WebSite\lib\angular-messages\index.js" />
+    <Content Include="WebSite\lib\angular-sanitize\angular-sanitize.js" />
+    <Content Include="WebSite\lib\angular-sanitize\angular-sanitize.min.js" />
+    <Content Include="WebSite\lib\angular-sanitize\index.js" />
+    <Content Include="WebSite\lib\angular-simditor\angular-simditor.js" />
+    <Content Include="WebSite\lib\angular-simditor\angular-simditor\src\angular-simditor.js" />
+    <Content Include="WebSite\lib\angular-simditor\angular\angular.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\dist\jquery.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\dist\jquery.min.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\MIT-LICENSE.txt" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\ajax.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\ajax\jsonp.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\ajax\load.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\ajax\parseJSON.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\ajax\parseXML.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\ajax\script.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\ajax\var\nonce.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\ajax\var\rquery.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\ajax\xhr.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\attributes.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\attributes\attr.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\attributes\classes.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\attributes\prop.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\attributes\support.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\attributes\val.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\callbacks.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\core.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\core\access.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\core\init.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\core\parseHTML.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\core\ready.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\core\var\rsingleTag.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css\addGetHookIf.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css\curCSS.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css\defaultDisplay.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css\hiddenVisibleSelectors.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css\support.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css\swap.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css\var\cssExpand.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css\var\getStyles.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css\var\isHidden.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css\var\rmargin.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\css\var\rnumnonpx.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\data.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\data\accepts.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\data\Data.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\data\var\data_priv.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\data\var\data_user.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\deferred.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\deprecated.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\dimensions.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\effects.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\effects\animatedSelector.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\effects\Tween.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\event.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\event\ajax.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\event\alias.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\event\support.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\exports\amd.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\exports\global.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\intro.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\jquery.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\manipulation.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\manipulation\support.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\manipulation\var\rcheckableType.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\manipulation\_evalUrl.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\offset.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\outro.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\queue.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\queue\delay.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\selector-native.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\selector-sizzle.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\selector.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\serialize.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\sizzle\dist\sizzle.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\sizzle\dist\sizzle.min.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\traversing.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\traversing\findFilter.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\traversing\var\rneedsContext.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\arr.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\class2type.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\concat.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\hasOwn.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\indexOf.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\pnum.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\push.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\rnotwhite.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\slice.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\strundefined.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\support.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\var\toString.js" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\wrap.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\js\lib\beautify-css.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\js\lib\beautify-html.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\js\lib\beautify.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\js\lib\cli.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\js\lib\unpackers\javascriptobfuscator_unpacker.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\js\lib\unpackers\myobfuscate_unpacker.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\js\lib\unpackers\p_a_c_k_e_r_unpacker.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\js\lib\unpackers\urlencode_unpacker.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\tests\test-myobfuscate-input.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\tests\test-myobfuscate-output.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\tests\test-packer-62-input.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\tests\test-packer-non62-input.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\data\css.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\data\html.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\data\javascript.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\generate-tests.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\underscore-min.js" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\underscore.js" />
+    <Content Include="WebSite\lib\angular-simditor\simditor-html\lib\simditor-html.js" />
+    <Content Include="WebSite\lib\angular-simditor\simditor-html\styles\simditor-html.css" />
+    <Content Include="WebSite\lib\angular-simditor\simditor\lib\simditor.js" />
+    <Content Include="WebSite\lib\angular-simditor\simditor\styles\simditor.css" />
+    <Content Include="WebSite\lib\angular-simditor\simple-hotkeys\lib\hotkeys.js" />
+    <Content Include="WebSite\lib\angular-simditor\simple-module\lib\module.js" />
+    <Content Include="WebSite\lib\angular-simditor\simple-uploader\lib\uploader.js" />
+    <Content Include="WebSite\lib\angular-toastr\dist\angular-toastr.css" />
+    <Content Include="WebSite\lib\angular-toastr\dist\angular-toastr.js" />
+    <Content Include="WebSite\lib\angular-toastr\dist\angular-toastr.min.css" />
+    <Content Include="WebSite\lib\angular-toastr\dist\angular-toastr.min.js" />
+    <Content Include="WebSite\lib\angular-toastr\dist\angular-toastr.tpls.js" />
+    <Content Include="WebSite\lib\angular-toastr\dist\angular-toastr.tpls.min.js" />
+    <Content Include="WebSite\lib\angular-toastr\gulpfile.js" />
+    <Content Include="WebSite\lib\angular-toastr\index.js" />
+    <Content Include="WebSite\lib\angular-ueditor\dist\angular-ueditor.js" />
+    <Content Include="WebSite\lib\angular-ueditor\dist\angular-ueditor.min.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\BS-Flatly-2.3.css" />
+    <Content Include="WebSite\lib\angular-ui-grid\Gruntfile.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\aliases.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\base.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\bump.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\changelog.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\clean.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\concat.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\connect.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\copy.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\cut-release.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\fontello.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\gh-pages.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\jscs.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\jshint.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\karma.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\less.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\ngdocs.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\ngtemplates.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\nugetpack.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\nugetpush.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\protractor.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\shell.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\uglify.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\grunt\watch.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\lib\grunt\plugins.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\lib\grunt\utils.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\cellTemplate.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\col-swap.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\filtertoggle.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\grid-accessiblility.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\grid-directive.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\grid-in-tabs.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\grid-save.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\leak-grid-many-options.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\leak-grid-no-options.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\leak-main.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\leak-no-grid.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\leak-testing.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\modal.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\overflow-problem.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\pinning.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\demo\subgrid.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\doc\css\bootstrap-flatly.min.css" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\doc\css\prettify.css" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\doc\templates\nav.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\css\site.css" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\customizer\index.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\dataTemplates.txt" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\index.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\js\bootstrap.min.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\js\customizer.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\auto-resize-grid\js\auto-resize.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\cellnav\js\cellnav.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\edit\js\gridEdit.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\edit\templates\cellEditor.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\edit\templates\dropdownEditor.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\edit\templates\fileChooserEditor.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\expandable\js\expandable.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\expandable\templates\expandableRow.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\expandable\templates\expandableRowHeader.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\expandable\templates\expandableScrollFiller.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\expandable\templates\expandableTopRowHeader.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\exporter\js\exporter.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\exporter\templates\csvLink.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\grouping\js\grouping.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\importer\js\importer.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\importer\templates\importerMenuItem.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\importer\templates\importerMenuItemContainer.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\infinite-scroll\js\infinite-scroll.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\move-columns\js\column-movable.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\pagination\js\pagination.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\pagination\templates\pagination.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\pinning\js\pinning.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\resize-columns\js\ui-grid-column-resizer.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\resize-columns\templates\columnResizer.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\row-edit\js\gridRowEdit.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\saveState\js\saveState.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\selection\js\selection.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\selection\templates\gridFooterSelectedItems.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\selection\templates\selectionHeaderCell.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\selection\templates\selectionRowHeader.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\selection\templates\selectionRowHeaderButtons.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\selection\templates\selectionSelectAllButtons.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\tree-base\js\tree-base.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\tree-base\templates\treeBaseExpandAllButtons.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\tree-base\templates\treeBaseHeaderCell.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\tree-base\templates\treeBaseRowHeader.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\tree-base\templates\treeBaseRowHeaderButtons.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\tree-view\js\tree-view.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\validate\js\gridValidate.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\validate\templates\cellTitleValidator.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\validate\templates\cellTooltipValidator.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\img\arrow.colors-default.svg" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\bootstrap.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\constants.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-cell.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-column-menu.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-filter.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-footer-cell.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-footer.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-grid-footer.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-group-panel.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-header-cell.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-header.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-menu-button.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-menu.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-one-bind.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-render-container.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-row.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-style.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-viewport.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid-visible.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-grid.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\directives\ui-pinned-container.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\factories\Grid.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\factories\GridApi.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\factories\GridColumn.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\factories\GridOptions.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\factories\GridRenderContainer.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\factories\GridRow.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\factories\GridRowColumn.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\factories\ScrollEvent.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\services\gridClassFactory.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\services\rowSearcher.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\services\rowSorter.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\core\services\ui-grid-util.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\cs.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\da.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\de.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\en.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\es.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\fa.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\fi.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\fr.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\he.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\hy.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\it.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\ja.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\ko.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\nl.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\no.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\pl.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\pt-br.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\pt.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\ro.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\ru.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\sk.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\sv.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\ta.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\tr.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\ui-i18n.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\zh-cn.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\js\i18n\zh-tw.js" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\ui-grid-filter.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\ui-grid-footer.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\ui-grid-grid-footer.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\ui-grid-group-panel.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\ui-grid-header.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\ui-grid-menu-button.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\ui-grid-no-header.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\ui-grid-row.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\ui-grid.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\uiGridCell.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\uiGridColumnMenu.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\uiGridFooterCell.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\uiGridHeaderCell.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\uiGridMenu.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\uiGridMenuItem.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\uiGridRenderContainer.html" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\templates\ui-grid\uiGridViewport.html" />
+    <Content Include="WebSite\lib\angular-ui-router\dist\angular-ui-router.js" />
+    <Content Include="WebSite\lib\angular-ui-router\dist\angular-ui-router.min.js" />
+    <Content Include="WebSite\lib\angular-ui-router\release\angular-ui-router.js" />
+    <Content Include="WebSite\lib\angular-ui-router\release\angular-ui-router.min.js" />
+    <Content Include="WebSite\lib\angular-ui-router\src\common.js" />
+    <Content Include="WebSite\lib\angular-ui-router\src\resolve.js" />
+    <Content Include="WebSite\lib\angular-ui-router\src\state.js" />
+    <Content Include="WebSite\lib\angular-ui-router\src\stateDirectives.js" />
+    <Content Include="WebSite\lib\angular-ui-router\src\stateFilters.js" />
+    <Content Include="WebSite\lib\angular-ui-router\src\templateFactory.js" />
+    <Content Include="WebSite\lib\angular-ui-router\src\urlMatcherFactory.js" />
+    <Content Include="WebSite\lib\angular-ui-router\src\urlRouter.js" />
+    <Content Include="WebSite\lib\angular-ui-router\src\view.js" />
+    <Content Include="WebSite\lib\angular-ui-router\src\viewDirective.js" />
+    <Content Include="WebSite\lib\angular-ui-router\src\viewScroll.js" />
+    <Content Include="WebSite\lib\angularAMD\angularAMD.js" />
+    <Content Include="WebSite\lib\angularAMD\angularAMD.min.js" />
+    <Content Include="WebSite\lib\angularAMD\ngload.js" />
+    <Content Include="WebSite\lib\angularAMD\ngload.min.js" />
+    <Content Include="WebSite\lib\angular\angular-csp.css" />
+    <Content Include="WebSite\lib\angular\angular.js" />
+    <Content Include="WebSite\lib\angular\angular.min.js" />
+    <Content Include="WebSite\lib\angular\index.js" />
+    <Content Include="WebSite\lib\datetime-picker\bootstrap-ui-datetime-picker-tests.js" />
+    <Content Include="WebSite\lib\datetime-picker\dist\datetime-picker.js" />
+    <Content Include="WebSite\lib\datetime-picker\dist\datetime-picker.min.js" />
+    <Content Include="WebSite\lib\datetime-picker\dist\datetime-picker.tpls.js" />
+    <Content Include="WebSite\lib\datetime-picker\example\index.html" />
+    <Content Include="WebSite\lib\datetime-picker\example\index.js" />
+    <Content Include="WebSite\lib\datetime-picker\example\style.css" />
+    <Content Include="WebSite\lib\datetime-picker\package.js" />
+    <Content Include="WebSite\lib\easy-pie-chart\dist\angular.easypiechart.js" />
+    <Content Include="WebSite\lib\easy-pie-chart\dist\angular.easypiechart.min.js" />
+    <Content Include="WebSite\lib\easy-pie-chart\dist\easypiechart.js" />
+    <Content Include="WebSite\lib\easy-pie-chart\dist\easypiechart.min.js" />
+    <Content Include="WebSite\lib\easy-pie-chart\dist\jquery.easypiechart.js" />
+    <Content Include="WebSite\lib\easy-pie-chart\dist\jquery.easypiechart.min.js" />
+    <Content Include="WebSite\lib\flot\jquery.flot.js" />
+    <Content Include="WebSite\lib\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="WebSite\lib\highcharts-ng\dist\highcharts-ng.js" />
+    <Content Include="WebSite\lib\highcharts-ng\dist\highcharts-ng.min.js" />
+    <Content Include="WebSite\lib\highcharts-ng\dist\highstock.js" />
+    <Content Include="WebSite\lib\jquery\jquery.js" />
+    <Content Include="WebSite\lib\jquery\jquery.min.js" />
+    <Content Include="WebSite\lib\layer\layer.js" />
+    <Content Include="WebSite\lib\layer\skin\default\icon-ext.png" />
+    <Content Include="WebSite\lib\layer\skin\default\icon.png" />
+    <Content Include="WebSite\lib\layer\skin\default\loading-0.gif" />
+    <Content Include="WebSite\lib\layer\skin\default\loading-1.gif" />
+    <Content Include="WebSite\lib\layer\skin\default\loading-2.gif" />
+    <Content Include="WebSite\lib\layer\skin\layer.css" />
+    <Content Include="WebSite\lib\ng-file-upload\161a70d3.favicon.ico" />
+    <Content Include="WebSite\lib\ng-file-upload\favicon.ico" />
+    <Content Include="WebSite\lib\ng-file-upload\FileAPI.flash.swf" />
+    <Content Include="WebSite\lib\ng-file-upload\FileAPI.js" />
+    <Content Include="WebSite\lib\ng-file-upload\FileAPI.min.js" />
+    <Content Include="WebSite\lib\ng-file-upload\index.html" />
+    <Content Include="WebSite\lib\ng-file-upload\ng-file-upload-all.js" />
+    <Content Include="WebSite\lib\ng-file-upload\ng-file-upload-all.min.js" />
+    <Content Include="WebSite\lib\ng-file-upload\ng-file-upload-shim.js" />
+    <Content Include="WebSite\lib\ng-file-upload\ng-file-upload-shim.min.js" />
+    <Content Include="WebSite\lib\ng-file-upload\ng-file-upload.js" />
+    <Content Include="WebSite\lib\ng-file-upload\ng-file-upload.min.js" />
+    <Content Include="WebSite\lib\ng-file-upload\robots.txt" />
+    <Content Include="WebSite\lib\ng-localStorage\localStorageUsage.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\dist\ocLazyLoad.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\dist\ocLazyLoad.min.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\complexExample\index.html" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\complexExample\js\app.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\complexExample\js\AppCtrl.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\complexExample\js\gridModule.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\complexExample\partials\main.html" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\complexExample\partials\modal.html" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\requireJSExample\css\ng-grid.css" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\requireJSExample\index.html" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\requireJSExample\js\angular.min.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\requireJSExample\js\jquery.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\requireJSExample\js\lazymodule.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\requireJSExample\js\main.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\requireJSExample\js\ng-grid-2.0.11.debug.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\requireJSExample\js\require.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\requireJSExample\js\testmodule.js" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\requireJSExample\partials\grid.html" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\simpleExample\index.html" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\simpleExample\js\testApp.js" />
+    <Content Include="WebSite\lib\requirejs\highcharts.js" />
+    <Content Include="WebSite\lib\requirejs\jquery-1.7.1.min.js" />
+    <Content Include="WebSite\lib\requirejs\require.js" />
+    <Content Include="WebSite\lib\requirejs\require.min.js" />
+    <Content Include="WebSite\lib\requirejs\require2.js" />
+    <Content Include="WebSite\lib\spinjs\.gitignore" />
+    <Content Include="WebSite\lib\spinjs\jquery.spin.js" />
+    <Content Include="WebSite\lib\spinjs\LICENSE.txt" />
+    <Content Include="WebSite\lib\spinjs\spin.js" />
+    <Content Include="WebSite\templates\account\forgetPwd.html" />
+    <Content Include="WebSite\templates\account\getActives.html" />
+    <Content Include="WebSite\templates\account\getAllowances.html" />
+    <Content Include="WebSite\templates\account\getArticles.html" />
+    <Content Include="WebSite\templates\account\getChannels.html" />
+    <Content Include="WebSite\templates\account\getCheckUsers.html" />
+    <Content Include="WebSite\templates\account\getCourses.html" />
+    <Content Include="WebSite\templates\account\getCustomers.html" />
+    <Content Include="WebSite\templates\account\getDetailAllowances.html" />
+    <Content Include="WebSite\templates\account\getDetailIncome.html" />
+    <Content Include="WebSite\templates\account\getIncomes.html" />
+    <Content Include="WebSite\templates\account\getOrders.html" />
+    <Content Include="WebSite\templates\account\getProducts.html" />
+    <Content Include="WebSite\templates\account\getTools.html" />
+    <Content Include="WebSite\templates\account\getUsers.html" />
+    <Content Include="WebSite\templates\account\login.html" />
+    <Content Include="WebSite\templates\account\modifPwd.html" />
+    <Content Include="WebSite\templates\account\report.html" />
+    <Content Include="WebSite\templates\article\addArticle.html" />
+    <Content Include="WebSite\templates\article\articles.html" />
+    <Content Include="WebSite\templates\banner\addBanner.html" />
+    <Content Include="WebSite\templates\banner\banners.html" />
+    <Content Include="WebSite\templates\categorys\addInformations.html" />
+    <Content Include="WebSite\templates\categorys\categorys.html" />
+    <Content Include="WebSite\templates\categorys\informations.html" />
+    <Content Include="WebSite\templates\config\getCaseNumbers.html" />
+    <Content Include="WebSite\templates\config\getConfigs.html" />
+    <Content Include="WebSite\templates\config\getVisitors.html" />
+    <Content Include="WebSite\templates\contract\contractList.html" />
+    <Content Include="WebSite\templates\courses\addCourses.html" />
+    <Content Include="WebSite\templates\courses\courses.html" />
+    <Content Include="WebSite\templates\home\index.html" />
+    <Content Include="WebSite\templates\knowledges\addKnowledges.html" />
+    <Content Include="WebSite\templates\knowledges\knowledges.html" />
+    <Content Include="WebSite\templates\product\addProduct.html" />
+    <Content Include="WebSite\templates\product\products.html" />
+    <Content Include="WebSite\templates\tools\addTools.html" />
+    <Content Include="WebSite\templates\tools\tools.html" />
+    <EmbeddedResource Include="SwaggerUI\index.html" />
+    <None Include="Properties\PublishProfiles\publish.pubxml" />
+    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebSite\.bowerrc" />
+    <Content Include="WebSite\.project" />
+    <Content Include="WebSite\app\testJson\api\account\Login.json" />
+    <Content Include="WebSite\app\testJson\api\config\getConfigs.json" />
+    <Content Include="WebSite\app\testJson\api\home\Login.json" />
+    <Content Include="WebSite\app\testJson\api\home\updatePassword.json" />
+    <Content Include="WebSite\app\testJson\api\web.config" />
+    <Content Include="WebSite\bower.json" />
+    <Content Include="WebSite\lib\angular-animate\.bower.json" />
+    <Content Include="WebSite\lib\angular-animate\angular-animate.min.js.map" />
+    <Content Include="WebSite\lib\angular-animate\bower.json" />
+    <Content Include="WebSite\lib\angular-animate\package.json" />
+    <Content Include="WebSite\lib\angular-animate\README.md" />
+    <Content Include="WebSite\lib\angular-bindonce\.bower.json" />
+    <Content Include="WebSite\lib\angular-bindonce\bower.json" />
+    <Content Include="WebSite\lib\angular-bindonce\CHANGELOG.md" />
+    <Content Include="WebSite\lib\angular-bindonce\package.json" />
+    <Content Include="WebSite\lib\angular-bindonce\README.md" />
+    <Content Include="WebSite\lib\angular-block-ui\.bower.json" />
+    <Content Include="WebSite\lib\angular-block-ui\bower.json" />
+    <Content Include="WebSite\lib\angular-block-ui\dist\angular-block-ui.css.map" />
+    <Content Include="WebSite\lib\angular-block-ui\dist\angular-block-ui.js.map" />
+    <Content Include="WebSite\lib\angular-block-ui\dist\angular-block-ui.min.js.map" />
+    <Content Include="WebSite\lib\angular-block-ui\dist\LICENSE" />
+    <Content Include="WebSite\lib\angular-block-ui\dist\README.md" />
+    <Content Include="WebSite\lib\angular-block-ui\LICENSE" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\.bower.json" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\bower.json" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\CHANGELOG.md" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\dist\angular-bootstrap-confirm.min.js.map" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\LICENSE" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\package.json" />
+    <Content Include="WebSite\lib\angular-bootstrap-confirm\README.md" />
+    <Content Include="WebSite\lib\angular-bootstrap\.bower.json" />
+    <Content Include="WebSite\lib\angular-bootstrap\.npmignore" />
+    <Content Include="WebSite\lib\angular-bootstrap\bower.json" />
+    <Content Include="WebSite\lib\angular-bootstrap\package.json" />
+    <Content Include="WebSite\lib\angular-bootstrap\README.md" />
+    <Content Include="WebSite\lib\angular-css\.bower.json" />
+    <Content Include="WebSite\lib\angular-css\bower.json" />
+    <Content Include="WebSite\lib\angular-css\README.md" />
+    <Content Include="WebSite\lib\angular-loading\.bower.json" />
+    <Content Include="WebSite\lib\angular-loading\.bowerrc" />
+    <Content Include="WebSite\lib\angular-loading\.editorconfig" />
+    <Content Include="WebSite\lib\angular-loading\.jshintrc" />
+    <Content Include="WebSite\lib\angular-loading\bower.json" />
+    <Content Include="WebSite\lib\angular-loading\CHANGELOG.md" />
+    <Content Include="WebSite\lib\angular-loading\LICENSE" />
+    <Content Include="WebSite\lib\angular-loading\package.json" />
+    <Content Include="WebSite\lib\angular-loading\README.md" />
+    <Content Include="WebSite\lib\angular-locale-zh-cn-master\bower.json" />
+    <Content Include="WebSite\lib\angular-messages\.bower.json" />
+    <Content Include="WebSite\lib\angular-messages\angular-messages.min.js.map" />
+    <Content Include="WebSite\lib\angular-messages\bower.json" />
+    <Content Include="WebSite\lib\angular-messages\LICENSE.md" />
+    <Content Include="WebSite\lib\angular-messages\package.json" />
+    <Content Include="WebSite\lib\angular-messages\README.md" />
+    <Content Include="WebSite\lib\angular-sanitize\.bower.json" />
+    <Content Include="WebSite\lib\angular-sanitize\angular-sanitize.min.js.map" />
+    <Content Include="WebSite\lib\angular-sanitize\bower.json" />
+    <Content Include="WebSite\lib\angular-sanitize\LICENSE.md" />
+    <Content Include="WebSite\lib\angular-sanitize\package.json" />
+    <Content Include="WebSite\lib\angular-sanitize\README.md" />
+    <Content Include="WebSite\lib\angular-toastr\.bower.json" />
+    <Content Include="WebSite\lib\angular-toastr\.npmignore" />
+    <Content Include="WebSite\lib\angular-toastr\bower.json" />
+    <Content Include="WebSite\lib\angular-toastr\CONTRIBUTING.md" />
+    <Content Include="WebSite\lib\angular-toastr\LICENSE" />
+    <Content Include="WebSite\lib\angular-toastr\README.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\.bower.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\3.0_UPGRADE.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\bower.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\Brainstorm.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\CHANGELOG.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\CONTRIBUTING.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\design\EDIT_AND_CELLNAV.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\design\RENDERING_CYCLE.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\design\SCROLLING_AND_VIRTUALISATION.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\DEVELOPER.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\FIRST_TIMER.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\ISSUE_TEMPLATE.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\lib\sauce\sauce_connect_block.sh" />
+    <Content Include="WebSite\lib\angular-ui-grid\lib\sauce\sauce_connect_setup.sh" />
+    <Content Include="WebSite\lib\angular-ui-grid\LICENSE.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\api\index.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\customizer\themes\autumn.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\customizer\themes\sky.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\customizer\themes\themes.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\100.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\10000.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\10000_complex.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\1000_columns.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\100_ASC.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\100_columns.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\100_DESC.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\100_female.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\100_male.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\500.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\500_complex.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\site\data\50_columns.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\098_contributing_to_ui-grid.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\099_upgrading_from_2.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\100_preReqs.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\101_intro.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\102_sorting.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\103_filtering.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\104_i18n.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\105_footer.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\106_binding.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\108_hidden_grids.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\109_multiple_grids.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\110_grid_in_modal.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\111_cellClass.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\112_swapping_data.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\113_adding_and_removing_columns.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\114_row_header.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\115_headerCellClass.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\116_fonts_and_installation.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\117_tooltips.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\120_RTL.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\121_grid_menu.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\122_accessibility.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\190_large_dataset.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\191_horizontal_scrolling.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\200_features.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\201_editable.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\202_cellnav.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\203_pinning.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\204_column_resizing.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\205_row_editable.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\206_exporting_data.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\207_import.csv" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\207_import.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\207_importing_data.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\208_save_state.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\209_grouping.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\210_selection.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\212_infinite_scroll.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\213_auto_resizing.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\214_pagination.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\215_treeView.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\216_expandable_grid.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\217_column_moving.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\299_third_party_features.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\301_editableOnFocus.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\302_custom_header.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\303_customizing_column_menu.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\304_two_grids.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\305_appScope.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\306_custom_filters.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\307_external_sorting.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\308_external_filtering.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\309_editable_with_cellnav.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\311_importing_data_with_rowedit.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\312_exporting_data_complex.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\313_custom_interpolation_symbols.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\314_external_pagination.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\315_editable_cascading_dropdown.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\316_dynamic_data_changes.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\317_custom_templates.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\319_complex_trees.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\320_complex_grouping.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\321_singleFilter.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\322_validation.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\401_AllFeatures.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\402_GridIsScrolling.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\403_end_to_end_testing.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\404_large_data_sets_and_performance.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\405_exporting_all_data_complex.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\499_FAQ.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\misc\tutorial\index.ngdoc" />
+    <Content Include="WebSite\lib\angular-ui-grid\package.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\planning30.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\README.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\cellnav\less\cellNav.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\edit\less\edit.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\expandable\less\expandable.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\exporter\less\exporter.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\grouping\less\grouping.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\importer\less\importer.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\move-columns\less\colMovable.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\pagination\less\pagination.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\pinning\less\pinning.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\resize-columns\less\column-resizer.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\row-edit\less\rowEdit.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\selection\less\selection.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\tree-base\less\tree-base.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\tree-view\less\tree-view.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\features\validate\less\validate.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\font\config.json" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\animation.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\body.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\bootstrap\bootstrap.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\cell.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\elements.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\footer.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\goups.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\grid.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\header.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\icons.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\main.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\menu.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\rtl.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\sorting.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\src\less\variables.less" />
+    <Content Include="WebSite\lib\angular-ui-grid\TODO.md" />
+    <Content Include="WebSite\lib\angular-ui-grid\travis_build.sh" />
+    <Content Include="WebSite\lib\angular-ui-grid\travis_print_logs.sh" />
+    <Content Include="WebSite\lib\angular-ui-router\.bower.json" />
+    <Content Include="WebSite\lib\angular-ui-router\bower.json" />
+    <Content Include="WebSite\lib\angular-ui-router\CHANGELOG.md" />
+    <Content Include="WebSite\lib\angular-ui-router\CONTRIBUTING.md" />
+    <Content Include="WebSite\lib\angular-ui-router\LICENSE" />
+    <Content Include="WebSite\lib\angular-ui-router\README.md" />
+    <Content Include="WebSite\lib\angularAMD\.bower.json" />
+    <Content Include="WebSite\lib\angularAMD\angularAMD.min.map" />
+    <Content Include="WebSite\lib\angularAMD\bower.json" />
+    <Content Include="WebSite\lib\angularAMD\ngload.min.map" />
+    <Content Include="WebSite\lib\angularAMD\README.md" />
+    <Content Include="WebSite\lib\angular\angular.min.js.gzip" />
+    <Content Include="WebSite\lib\angular\angular.min.js.map" />
+    <Content Include="WebSite\lib\angular\bower.json" />
+    <Content Include="WebSite\lib\angular\LICENSE.md" />
+    <Content Include="WebSite\lib\angular\package.json" />
+    <Content Include="WebSite\lib\angular\README.md" />
+    <Content Include="WebSite\lib\datetime-picker\.bower.json" />
+    <Content Include="WebSite\lib\datetime-picker\bower.json" />
+    <Content Include="WebSite\lib\datetime-picker\LICENSE" />
+    <Content Include="WebSite\lib\datetime-picker\README.md" />
+    <Content Include="WebSite\lib\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="WebSite\lib\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="WebSite\lib\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="WebSite\lib\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="WebSite\lib\highcharts-ng\.jshintrc" />
+    <Content Include="WebSite\lib\highcharts-ng\.npmignore" />
+    <Content Include="WebSite\lib\highcharts-ng\.travis.yml" />
+    <Content Include="WebSite\lib\highcharts-ng\LICENSE" />
+    <Content Include="WebSite\lib\highcharts-ng\package.json" />
+    <Content Include="WebSite\lib\highcharts-ng\README.md" />
+    <Content Include="WebSite\lib\ng-file-upload\.bower.json" />
+    <Content Include="WebSite\lib\ng-file-upload\bower.json" />
+    <Content Include="WebSite\lib\ng-file-upload\LICENSE" />
+    <Content Include="WebSite\lib\ng-file-upload\README.md" />
+    <Content Include="WebSite\lib\ocLazyLoad\.bower.json" />
+    <Content Include="WebSite\lib\ocLazyLoad\bower.json" />
+    <Content Include="WebSite\lib\ocLazyLoad\CHANGELOG.md" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\complexExample\bower.json" />
+    <Content Include="WebSite\lib\ocLazyLoad\examples\complexExample\README.md" />
+    <Content Include="WebSite\lib\ocLazyLoad\LICENSE.md" />
+    <Content Include="WebSite\lib\ocLazyLoad\README.md" />
+    <Content Include="WebSite\lib\requirejs\.bower.json" />
+    <Content Include="WebSite\lib\requirejs\bower.json" />
+    <Content Include="WebSite\lib\requirejs\README.md" />
+    <Content Include="WebSite\lib\spinjs\.bower.json" />
+    <Content Include="WebSite\lib\spinjs\.jshintrc" />
+    <Content Include="WebSite\lib\spinjs\.npmignore" />
+    <Content Include="WebSite\lib\spinjs\bower.json" />
+    <Content Include="WebSite\lib\spinjs\README.md" />
+    <Content Include="WebSite\lib\angular-ueditor\dist\angular-ueditor.js.map" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\.bower.json" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\bower.json" />
+    <Content Include="WebSite\lib\angular-simditor\jquery\src\sizzle\dist\sizzle.min.map" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\cssbeautifier\tests\test.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\cssbeautifier\tests\__init__.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\cssbeautifier\__init__.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\cssbeautifier\__version__.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\js-beautify" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\js-beautify-profile" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\js-beautify-test" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\tests\shell-smoke-test.sh" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\tests\test-perf-jsbeautifier.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\tests\testindentation.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\tests\testjsbeautifier.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\tests\__init__.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\evalbased.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\javascriptobfuscator.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\myobfuscate.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\packer.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\README.specs.mkd" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\tests\testjavascriptobfuscator.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\tests\testmyobfuscate.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\tests\testpacker.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\tests\testurlencode.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\tests\__init__.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\urlencode.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\unpackers\__init__.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\__init__.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\jsbeautifier\__version__.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\MANIFEST.in" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\python\setup.py" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\git-status-clear.sh" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\template\node-css.mustache" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\template\node-html.mustache" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\template\node-javascript.mustache" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\template\python-css.mustache" />
+    <Content Include="WebSite\lib\angular-simditor\js-beautify\test\template\python-javascript.mustache" />
+    <Content Include="WebSite\readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\Startup.Cors.cs" />
+    <Compile Include="App_Start\Startup.SignalR.cs" />
+    <Compile Include="App_Start\SwaggerConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ActiveController.cs" />
+    <Compile Include="Controllers\App\AppFindController.cs" />
+    <Compile Include="Controllers\App\AppHomeController.cs" />
+    <Compile Include="Controllers\App\AppMineController.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\ConfigController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\FinancialController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ToolController.cs" />
+    <Compile Include="Extensions\MyMultipartFormDataStreamProvider.cs" />
+    <Compile Include="Filters\ModelValidationFilterAttribute.cs" />
+    <Compile Include="Filters\WebApiExceptionHandleFilter.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CookieHelper.cs" />
+    <Compile Include="Owin\OwinLogFactory.cs" />
+    <Compile Include="Owin\OwinLogger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\PublishToDev.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dafy.OnlineTran.Common\Dafy.OnlineTran.Common.csproj">
+      <Project>{e17f33eb-944c-41c2-80c8-af3d84003ef8}</Project>
+      <Name>Dafy.OnlineTran.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dafy.OnlineTran.Container\Dafy.OnlineTran.Container.csproj">
+      <Project>{7f3c9467-ad7a-4c3f-9d42-420cd05937bf}</Project>
+      <Name>Dafy.OnlineTran.Container</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dafy.OnlineTran.Entity\Dafy.OnlineTran.Entity.csproj">
+      <Project>{4dad6ad1-824d-4b8b-afa7-59a3a28726ed}</Project>
+      <Name>Dafy.OnlineTran.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dafy.OnlineTran.IService\Dafy.OnlineTran.IService.csproj">
+      <Project>{d91984c3-9288-4fed-bf5f-eb0754526403}</Project>
+      <Name>Dafy.OnlineTran.IService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>47426</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:47426/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,262 @@
+<div class="panel self-panel">
+	<div class="panel-heading">
+		操作栏
+	</div>
+	<div class="panel-body">
+		<div class="form-horizontal" role="form">
+		    <div class="form-group">
+				<div class="col-md-12">
+					<button class="btn btn-primary" ng-click="GetContracts()"> 
+			          <span class="glyphicon glyphicon-search"></span>搜索 
+			        </button>
+		    	    <button type="button" class="btn btn-success" ng-click="autoMethod();">
+		    	   	     自动分案
+		    	    </button>
+		    	   <button type="button" class="btn btn-danger" ng-click="handMethod();">手动分案</button>
+		    	   <button type="button" class="btn btn-warning" ng-click="cancelCases();">撤销分案</button>
+		    	   <button type="button" class="btn btn-default" ng-click="caseDelay();">案件延期</button>
+		    	   <button type="button" class="btn btn-info" ng-click="handFinishCase();">人工结案</button>
+		    	   <button type="button" class="btn btn-success" ng-click="toExcelContracts();">导出</button>
+		        </div>
+		    <div class="clearfix"></div>
+		    <div style="border-top:1px solid #eaeaea;margin: 15px;"></div>
+			<div class="form-group">
+	             <label  class="col-md-1 control-label">案件状态</label>
+						<div class="col-md-2">
+							<select class="form-control" ng-model="parm.state">
+								<option value="">请选择</option>
+								<option value="1">未分配</option>
+								<option value="2">已到访</option>
+								<option value="3">还款结案</option>
+								<option value="4">人工结案</option>
+								<option value="5">已分配</option>
+							</select>
+						</div>
+	             <label  class="col-md-1 control-label">案件结果</label>
+						<div class="col-md-2">
+							<select class="form-control" ng-model="parm.result">
+								<option value="">请选择</option>
+								<option value="1">PTP</option>
+								<option value="2">特殊案件</option>
+								<option value="3">其他备注</option>
+							</select>
+						</div>
+				<label  class="col-md-1 control-label">身份证号</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="parm.ident" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label  class="col-md-1 control-label">合同号</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="parm.contractNo" />
+				</div>						
+				<label  class="col-md-1 control-label">外访员</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="parm.visitor" />
+				</div>
+				<label  class="col-md-1 control-label">分案时间</label>
+				<div class="col-md-2">
+					<!--<input class="form-control" type="date" ng-model="parm.startDate" />-->
+			      <p class="input-group">
+			          <input type="text" readonly="readonly" class="form-control" uib-datepicker-popup ng-model="parm.startDate" is-open="popupBegin.opened" datepicker-options="beginOptions"  close-text="关闭" current-text="今天"/>
+			          <span class="input-group-btn">
+			            <button type="button" class="btn btn-default" ng-click="openBegin()">
+			            	<i class="glyphicon glyphicon-calendar"></i>
+			            </button>
+			          </span>
+	              </p>						
+				</div>		
+				<div style="float: left;">
+					--
+				</div>
+				<div class="col-md-2">
+						      <p class="input-group">
+						          <input type="text" readonly="readonly" class="form-control" uib-datepicker-popup ng-model="parm.endDate" is-open="popupEnd.opened" datepicker-options="endOptions"  close-text="关闭" current-text="今天"/>
+						          <span class="input-group-btn">
+						            <button type="button" class="btn btn-default" ng-click="openEnd()">
+						            	<i class="glyphicon glyphicon-calendar"></i>
+						            </button>
+						          </span>
+				              </p>	
+				</div>	
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div class="panel self-panel marBottom0">
+	<div class="panel-heading">
+		合同列表
+	</div>
+	<div class="panel-body scroll">
+		<table class="w2500 table table-striped table-bordered table-hover dataTable no-footer" dw-loading="getContracts" dw-loading-options="{active: true,text: '数据加载中，请稍后...',spinnerOptions: {color: '#00C4CA'}}">
+			<thead>
+				<tr>
+					<th>
+					  <input type="checkbox" ng-model="contractCtrl.master" ng-click="selectAll(contractCtrl.master)" />
+					</th>
+					<th>序号</th>
+					<th>合同号</th>
+					<th>分配状态</th>
+					<th>客户名称</th>
+					<th>性别</th>
+					<th>身份证号码</th>
+					<th>合同申请日期</th>
+					<th>逾期天数</th>
+					<th>欠款总额</th>
+					<th>客户手机号</th>
+					<th>客户地址</th>
+					<th>案件结果</th>
+					<th>分案时间</th>
+					<th>外访截止日期</th>
+					<th>结案时间</th>
+					<th>操作时间</th>
+					<th>外访员</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in contractList">
+					<td>
+					  <input type="checkbox" ng-model="item.selectFlag"  />
+					</td>
+					<td>{{$index+1}}</td>
+					<td>{{item.contractNo}}</td>
+					
+					<td ng-if="item.state==1">未分配</td>
+					<td ng-if="item.state==2">已到访</td>
+					<td ng-if="item.state==3">还款结案</td>
+					<td ng-if="item.state==4">人工结案</td>
+					<td ng-if="item.state==5">已分配</td>
+					<td ng-if="item.state==null"></td>						
+					
+					<td>{{item.name}}</td>
+					<td>{{item.sex==m?"男":"女"}}</td>
+					<td>{{item.ident}}</td>
+					<td>{{item.appDate | date:'yyyy-MM-dd'}}</td>
+					<td>{{item.cpd}}</td>
+					<td>{{item.remainingTotal}}</td>
+					<td>{{item.phone}}</td>
+					<td>{{item.address}}</td>
+					
+					<td ng-if="item.result==1">PTP</td>
+					<td ng-if="item.result==2">特殊案件</td>
+					<td ng-if="item.result==3">其它备注</td>
+					<td ng-if="item.result==null"></td>
+					<td>{{item.startTime | date:'yyyy-MM-dd HH:mm'}}</td>
+					<td>{{item.visitorDate | date:'yyyy-MM-dd'}}</td>
+					<td>{{item.closeTime | date:'yyyy-MM-dd HH:mm'}}</td>
+					<td>{{item.updateTime | date:'yyyy-MM-dd HH:mm'}}</td>
+					<td>{{item.visitor}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		<!--描述：分页事件-->
+		<div class="pull-right padding-horizontal">
+			<ul uib-pagination boundary-links="true" max-size="10" items-per-page="parm.pageSize" total-items="totalItems" ng-change="pageChanged()" ng-model="parm.pageIndex" class="pagination-sm" previous-text="上一页" next-text="下一页" boundary-link-numbers="true" first-text="第一页" last-text="最后一页"></ul>
+		</div>
+		<div class="clearfix"></div>
+</div>
+<!--
+	描述：手动分案
+-->
+	<script type="text/ng-template" id="handMethod.html">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">手动分案</h4>
+        </div>		
+			<div class="modal-body">
+				<form class="form-horizontal" role="form" name="handMethodForm"  ng-submit="ok()" novalidate>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">外访员调整为：</label>
+						<div class="col-sm-5">
+							<input ng-change="getUsers()" type="text" maxlength="5" class="form-control" placeholder="请输入外访员姓名" ng-model="parm.userName" required>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>  
+					<div class="form-group">
+						<label class="col-md-4 control-label">外访员工号：</label>
+						<div class="col-md-5">
+							<select class="form-control" ng-model="parm.userId" ng-options="item.userId as item.userId for item in userList" required>
+							</select>								
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" ng-disabled="handMethodForm.$invalid" ng-click="ok()">
+                      确定
+      </button>
+				<button class="btn btn-warning" ng-click="cancel()">取消</button>
+			</div>
+		</form>
+	</script>
+<!--
+	描述：案件延期
+-->
+	<script type="text/ng-template" id="caseDelay.html">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">案件延期</h4>
+        </div>		
+			<div class="modal-body">
+				<form class="form-horizontal" role="form" name="caseDelayForm"  ng-submit="ok()" novalidate>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">延期天数：</label>
+						<div class="col-sm-5">
+							<input type="number" maxlength="5" class="form-control" placeholder="请输入延期天数" ng-model="parm.days" required>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" ng-disabled="caseDelayForm.$invalid" ng-click="ok()">
+                      确定
+      </button>
+				<button class="btn btn-warning" ng-click="cancel()">取消</button>
+			</div>
+		</form>
+	</script>
+<!--
+	描述：结案合同
+-->
+	<script type="text/ng-template" id="handFinishCase.html">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">人工结案</h4>
+        </div>		
+			<div class="modal-body">
+                <p>是否确定结案所选的案件？</p>
+				<!--<select multiple class="form-control">
+				  <option ng-repeat="item in selectedItem">{{item.contractNo}}</option>
+				</select>                                        -->
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" ng-click="ok()">
+                                           确定
+                 </button>
+				<button class="btn btn-warning" ng-click="cancel()">取消</button>
+			</div>
+		</form>
+	</script>
+<!--
+	描述：撤销分案
+-->
+	<script type="text/ng-template" id="cancelCases.html">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-title">撤销分案</h4>
+        </div>		
+			<div class="modal-body">
+                <p>是否确定撤销所选的已分配案件？</p>
+				<!--<select multiple class="form-control">
+				  <option ng-repeat="item in parm.list">{{item.contractNo}}</option>
+				</select>                                        -->
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" ng-click="ok()">
+                                           确定
+                 </button>
+				<button class="btn btn-warning" ng-click="cancel()">取消</button>
+			</div>
+		</form>
+	</script>

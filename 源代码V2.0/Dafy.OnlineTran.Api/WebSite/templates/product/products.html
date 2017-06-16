@@ -1,0 +1,86 @@
+<div class="panel self-panel">
+	<div class="panel-heading">
+		查询条件
+	</div>
+	<div class="panel-body">
+		<div class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="firstname" class="col-md-1 control-label">搜索词</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="parm.paraName" placeholder="输入产品名称或机构名称" />
+				</div>
+				<div class="col-md-2">
+					<select class="form-control" ng-model="parm.productType" >
+							  <option value="">全部类型</option>
+						      <option value="1">保险类</option>
+						      <option value="2">投融类</option>
+						      <option value="3">其他类</option>
+					</select>
+				</div>
+				<div class="col-md-2">
+					<select class="form-control" ng-model="parm.status" >
+							  <option value="">全部状态</option>
+						      <option value="1">上架</option>
+						      <option value="2">下架</option>
+						      <option value="3">草稿</option>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-primary" ng-click="getProducts()"> 
+			          <span class="glyphicon glyphicon-search"></span>搜索 
+			       </button>
+			        <button class="btn btn-success" ng-click="editProduct(-1)">
+			          <span class="glyphicon glyphicon-plus"></span>新增产品
+			        </button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel self-panel">
+	<div class="panel-heading">
+		产品管理列表
+	</div>
+	<div class="panel-body scroll">
+		<table class="table table-striped table-bordered table-hover dataTable no-footer" dw-loading="getProducts" dw-loading-options="{active: true,text: '数据加载中，请稍后...',spinnerOptions: {color: '#00C4CA'}}">
+			<thead>
+				<tr>
+					<th>序号</th>
+				    <th>产品编号</th>
+				    <th>来自机构</th>
+					<th>产品名称</th>
+					<th>产品类型</th>
+					<th>产品状态</th>
+					<td>上架时间</th>
+					<th>热门推荐</th>
+				    <th>列表排行</th>
+				    <th style="width: 60px;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in getProductsList">
+					<td>{{$index+1}}</td>
+					<td>{{item.pid}}</td>
+					<td>{{item.companyName}}</td>
+					<td>{{item.productName}}</td>
+					<td>{{item.productType}}</td>
+					<td>{{item.status}}</td>
+					<td>{{item.publishTime| date:'yyyy-MM-dd hh:mm'}}</td>
+				    <td>{{item.hotPosition}}</td>
+				    <td>{{item.position}}</td>
+				    <td>
+				    	<button class="btn btn-primary btn-sm" ng-click="editProduct(item.pid)">编辑 <span class="glyphicon glyphicon-pencil"></span> </button>
+				    </td>
+					<!--<td>
+					    <button mwl-confirm class="btn btn-danger btn-sm" ng-click="delProducts(item.id)">删除 <span class="glyphicon glyphicon-remove"></span> </button>
+					</td>-->
+				</tr>
+			</tbody>
+		</table>
+		<!--描述：分页事件-->
+		<div class="pull-right">
+			<ul uib-pagination boundary-links="true" max-size="10" items-per-page="parm.pageSize" total-items="totalItems" ng-change="pageChanged()" ng-model="parm.pageIndex" class="pagination-sm" previous-text="上一页" next-text="下一页" boundary-link-numbers="true" first-text="第一页" last-text="最后一页"></ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,163 @@
+<div class="panel self-panel">
+	<div class="panel-heading">
+		查询条件
+	</div>
+	<div class="panel-body">
+		<div class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="firstname" class="col-md-1 control-label">搜索词</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="parm.paraName" placeholder="搜索课程名称" />
+				</div>
+									<div class="col-md-2">
+					<select class="form-control" ng-model="parm.paraName">
+						<option value="">全部状态</option>
+					</select>-
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-primary" ng-click="getCourses()"> 
+			          <span class="glyphicon glyphicon-search"></span>搜索 
+			       </button>
+			        <button class="btn btn-success" ng-click="saveCourses(-1)">
+			          <span class="glyphicon glyphicon-plus"></span>新增
+			        </button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel self-panel">
+	<div class="panel-heading">
+		课程管理列表
+	</div>
+	<div class="panel-body scroll">
+		<table class="table table-striped table-bordered table-hover dataTable no-footer" dw-loading="getCourses" dw-loading-options="{active: true,text: '数据加载中，请稍后...',spinnerOptions: {color: '#00C4CA'}}">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>课程名称</th>
+					<th>状态</th>
+					<th>最后编辑时间</th>
+					<td>编辑人</th>
+					<th>推荐到发现首页</th>
+				    <th style="width: 60px;">编辑</th>
+				    <th style="width: 60px;">删除</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in getCoursesList">
+					<td>{{$index+1}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.title}}</td>
+					<td>{{item.conent}}</td>
+					<td>{{item.isRecomand}}</td>
+				    <td>{{item.status}}</td>
+				    <td>
+				    	<button class="btn btn-primary btn-sm" ng-click="saveCourses($index)">编辑 <span class="glyphicon glyphicon-pencil"></span> </button>
+				    </td>
+					<td>
+					    <button mwl-confirm class="btn btn-danger btn-sm" ng-click="delCourses(item.id)">删除 <span class="glyphicon glyphicon-remove"></span> </button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!--描述：分页事件-->
+		<div class="pull-right">
+			<ul uib-pagination boundary-links="true" max-size="10" items-per-page="parm.pageSize" total-items="totalItems" ng-change="pageChanged()" ng-model="parm.pageIndex" class="pagination-sm" previous-text="上一页" next-text="下一页" boundary-link-numbers="true" first-text="第一页" last-text="最后一页"></ul>
+		</div>
+	</div>
+</div>
+
+<!--
+	描述：新增课程
+-->
+	<script type="text/ng-template" id="saveCourses.html">
+			<div class="modal-body">
+				<form class="form-horizontal" role="form" name="myForm"  ng-submit="ok()" novalidate>
+				  <div class="form-group">
+						<label class="col-sm-2 control-label">课程名称</label>
+						<div class="col-sm-8">
+							<input type="text" maxlength="50" class="form-control" placeholder="请输入课程名称" ng-model="configItem.name"  required>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">副标题</label>
+						<div class="col-sm-8">
+							<input type="text" maxlength="50" class="form-control" placeholder="请输入课程标题" ng-model="configItem.title" required>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+									   <div class="form-group">
+						<label class="col-sm-2 control-label">图片</label>
+						<div class="col-sm-8">
+							<div class="col-xs-4">
+						      	  <div class="btn btn-default" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+			    ngf-accept="'image/*'" ngf-max-size="20MB" >选择文件<span class="glyphicon glyphicon-file"></span> </div>
+			                    <span>{{file.name}}</span>
+						    </div>
+						    <div class="col-xs-6" dw-loading="upLoadTrainImg" dw-loading-options="{active: false,text: '正在上传图片，请稍后...',spinnerOptions: {color: '#00C4CA'}}">
+						      <button type="button" ng-click="uploadPlanImg(file)"  class="btn btn-success button-width" >上传</button>
+						    </div>
+							<!--<input type="text" maxlength="50" class="form-control" placeholder="请输入课程图片" ng-model="configItem.imageUrl"  required>-->
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+				    <div class="form-group">
+			         	<div class="col-md-10 col-md-offset-2">
+			         	<img src="{{configItem.imageUrl}}" height="74" width="92" />
+			            </div>
+			         </div>
+			         			<div class="form-group">
+						<label class="col-sm-2 control-label">分享描述</label>
+						<div class="col-sm-8">
+							<input type="text" maxlength="50" class="form-control" placeholder="请输入推荐位置" ng-model="configItem.isRecomand"  required>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+								        <div class="form-group">
+						<label class="col-sm-2 control-label">正文</label>
+						<div class="col-sm-8">
+							<div id="idTest" style="margin-bottom:1.25rem;width:100%;" class="ueditor" ng-model="configItem.conent" >
+					        </div>
+							<!--<input type="text" maxlength="50" class="form-control" placeholder="请输入课程内容" ng-model="configItem.conent"  required>-->
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">推荐位置</label>
+						<div class="col-sm-8">
+							<select class="form-control">
+						    <option value="0">否</option>
+						     <option value="1">位置1</option>
+						      <option value="2">位置2</option>
+						       <option value="3">位置3</option>
+					        </select>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">发布人</label>
+						<div class="col-sm-8">
+							<input type="text" maxlength="50" class="form-control" placeholder="请输入发布人" ng-model="configItem.isRecommand"  required>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+				   <div class="form-group">
+						<label class="col-sm-2 control-label">发布时间</label>
+						<div class="col-sm-8">
+							<input type="text" maxlength="50" class="form-control" placeholder="请输入发布时间" ng-model="configItem.isPublish"  required>
+						</div>
+						<label class="control-label" style="color: red;">*</label>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="ok()">
+                      保存
+      </button>
+				<button class="btn btn-warning" ng-click="cancel()">取消</button>
+			</div>
+		</form>
+	</script>
