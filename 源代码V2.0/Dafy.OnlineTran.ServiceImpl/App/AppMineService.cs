@@ -27,7 +27,7 @@ namespace Dafy.OnlineTran.ServiceImpl.App
             {
                 return null;
             }
-            var sumOrder = Order.FindAll("select * from [Order] where uid=" + rq.uid).ToList();
+            var sumOrder = Order.FindAll("select * from [Order] where clientUid=" + rq.uid).ToList();
             return new WeixinUserItemRS() {
                 Id = data.uid,
                 Headimgurl = data.headerUrl,
@@ -116,13 +116,13 @@ namespace Dafy.OnlineTran.ServiceImpl.App
         }
 
         /// <summary>
-        /// 我的销售记录 CustormDetailRS
+        /// 我的销售记录
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
         public SaleRecordRS SaleRecord(SaleRecordRQ rq)
         {
-            var data = Order.FindAll(string.Format("select * from [Order] where uid={0}  order by createTime desc", rq.uid));
+            var data = Order.FindAll(string.Format("select * from [Order] where status=3 and clientUid={0}  order by createTime desc", rq.uid));
             if (data.ToList().Count == 0)
             {
                 return new SaleRecordRS()
@@ -253,7 +253,7 @@ namespace Dafy.OnlineTran.ServiceImpl.App
             var result = new MineTeamRS { total = 0, list = null,directNum=0,undirectNum=0 };
             try
             {
-                var sql = " uid in(select uid from UserRelation where puid=" + rq.uid + ")";
+                var sql = " roleId in(1,2) and uid in(select uid from UserRelation where puid=" + rq.uid + ")";
                 if (!string.IsNullOrWhiteSpace(rq.paraName))
                 {
                     sql += string.Format(" and (uname like '%{0}%' or nickName like '%{0}%' or phone like '%{0}%') ", rq.paraName);
@@ -289,8 +289,8 @@ namespace Dafy.OnlineTran.ServiceImpl.App
                              });
                 result.total = Users.FindAll(sql, null, null, 0, 0).Count;
                 if (result.total == 0) return result;
-                result.directNum = UserRelation.FindAll("select * from UserRelation where puid=" + rq.uid).Count;
-                result.undirectNum = UserRelation.FindAll("select * from UserRelation where puid in(select uid from UserRelation where puid=" + rq.uid + ")").Count;
+                result.directNum = UserRelation.FindAll("select * from UserRelation where uid in(select uid from Users where roleId>0) and puid=" + rq.uid).Count;
+                result.undirectNum = UserRelation.FindAll("select * from UserRelation where uid in(select uid from Users where roleId>0) and puid in(select uid from UserRelation where puid=" + rq.uid + ")").Count;
                 result.list = query.Select(a => new MineTeamItemRS
                 {
                     uid=a.uid,
@@ -298,7 +298,7 @@ namespace Dafy.OnlineTran.ServiceImpl.App
                     TelePhone = a.phone,
                     Username = a.uname,
                     Headimgurl = a.headerUrl,
-                    ChildNum = UserRelation.FindAll("select * from UserRelation where puid=" + a.uid).Count
+                    ChildNum = UserRelation.FindAll("select * from UserRelation where uid in(select uid from Users where roleId>0) and puid=" + a.uid).Count
                 }).ToList();
             }
             catch (Exception ex)
@@ -488,7 +488,7 @@ namespace Dafy.OnlineTran.ServiceImpl.App
         public IncomeRecordRS IncomeRecord(SaleRecordRQ rq)
         {
             var user = Users.FindByuid(rq.uid);
-            var data = Order.FindAll(string.Format("select sum(rate1) rate1,sum(rate2) rate2,sum(rate3) rate3,sum(rate4) rate4,sum(income) income,month(createTime) record from [Order] where  year(createTime)=year(GETDATE()) and uid={0} group by month(createTime)", rq.uid));
+            var data = Order.FindAll(string.Format("select isnull(sum(rate1),0) rate1,isnull(sum(rate2),0) rate2,isnull(sum(rate3),0) rate3,isnull(sum(rate4),0) rate4,sum(income) income,month(createTime) record from [Order] where status=3 and year(createTime)=year(GETDATE()) and clientUid={0} group by month(createTime)", rq.uid));
             if (data.ToList().Count == 0)
             {
                 return new IncomeRecordRS()

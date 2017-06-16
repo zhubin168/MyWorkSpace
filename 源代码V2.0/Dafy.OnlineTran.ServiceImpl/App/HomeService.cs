@@ -37,10 +37,10 @@ namespace Dafy.OnlineTran.ServiceImpl.App
 
             if (rq.pId > 0)
             {
-                var sql = " 1=1 and unbindTime is not null and unbindTime>getdate() ";
-                    sql += string.Format(" and uid='{0}' ", user.uid);
-
-                var userRelationList = UserRelation.FindAll(sql, "rid desc", null,0,1).ToList().FirstOrDefault();
+               // var sql = " 1=1 and unbindTime is not null and unbindTime>getdate() ";
+                var  sql = string.Format(" uid='{0}' ", user.uid);
+         
+                var userRelationList = UserRelation.Find(sql);
                 if (userRelationList == null)
                 {
                     var userRelation = new UserRelation();

@@ -443,7 +443,7 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
         {
             try
             {
-                var record = Users.Find(Users._.uname,rq.userName);
+                var record = Users.Find(" uname='{0}' and roleId>0 ", rq.userName);
                 if (record == null)
                 {
                     return new ResultModel<string>
@@ -453,15 +453,24 @@ namespace Dafy.OnlineTran.ServiceImpl.Pc
                         data = "-1"
                     };
                 }
-                var relation = new UserRelation()
+                var relation = UserRelation.Find(UserRelation._.uid, rq.id);
+                if (relation == null)
                 {
-                    uid=rq.id,
-                    pUid=record.uid,
-                    bindSource="P",
-                    bingTime=DateTime.Now,
-                    createTime=DateTime.Now,
-                    updateTime=DateTime.Now
-                };
+                    relation = new UserRelation()
+                    {
+                        uid = rq.id,
+                        pUid = record.uid,
+                        bindSource = "P",
+                        bingTime = DateTime.Now,
+                        createTime = DateTime.Now,
+                        updateTime = DateTime.Now
+                    };
+                }
+                else
+                {
+                    relation.pUid = record.uid;
+                    relation.updateTime = DateTime.Now;
+                }
                 int nCount = relation.Save();
                 return new ResultModel<string>
                 {
