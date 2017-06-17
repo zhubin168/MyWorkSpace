@@ -341,7 +341,7 @@ namespace Dafy.OnlineTran.ServiceImpl.App
             order.clientName = rq.userName;
             order.clientPhone = rq.phone;
             order.sex = rq.sex;
-
+            order.record = "客户：" + rq.userName + "在时间：" + DateTime.Now + ",成功预约了此产品！";
             orders.Add(order);
             int nCount = orders.Save();
             result.message = nCount > 0 ? "预约成功！" : "预约失败！";

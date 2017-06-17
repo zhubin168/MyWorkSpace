@@ -78,6 +78,7 @@ namespace Dafy.OnlineTran.Api.Controllers.App
         /// <param name="rq"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public ArticleListItemRS GetArticleDetail(AppGetArticleDetailRQ rq)
         {
             return _findService.GetArticleDetail(rq);
@@ -88,6 +89,7 @@ namespace Dafy.OnlineTran.Api.Controllers.App
         /// <param name="rq"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public CustomerToolsItemRS GetDetailTool(AppToolsDetailRQ rq)
         {
             return _findService.GetDetailTool(rq);
@@ -110,6 +112,7 @@ namespace Dafy.OnlineTran.Api.Controllers.App
         /// <param name="rq"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public CustomerToolsRS GetTools(AppCustomerToolsRQ rq)
         {
             if (rq == null || rq.pageIndex <= 0 || rq.pageSize <= 0)
@@ -178,6 +181,7 @@ namespace Dafy.OnlineTran.Api.Controllers.App
         /// <param name="rq"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public ResultModel<KnowledgeItemRS> GetDetailKnowledge(AppKnowledgeDetailRQ rq)
         {
             var result = new ResultModel<KnowledgeItemRS>
@@ -201,6 +205,7 @@ namespace Dafy.OnlineTran.Api.Controllers.App
         /// <param name="rq"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public ResultModel<InformationItemRS> GetDetailInformation(AppInformationDetailRQ rq)
         {
             var result = new ResultModel<InformationItemRS>
@@ -243,6 +248,7 @@ namespace Dafy.OnlineTran.Api.Controllers.App
         /// <param name="rq"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public ResultModel<AppGetDetailProductRS> GetDetailProduct(AppGetDetailProductRQ rq)
         {
             var result = new ResultModel<AppGetDetailProductRS>

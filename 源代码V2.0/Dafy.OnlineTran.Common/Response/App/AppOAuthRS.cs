@@ -16,5 +16,6 @@ namespace Dafy.OnlineTran.Common.Response.App
 
         public string name { set; get; }
         public long uId{set;get;}
+        public int isFollow { get; set; }
     }
 }

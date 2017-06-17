@@ -4,15 +4,24 @@ using Dafy.OnlineTran.Common.Request.App;
 using Dafy.OnlineTran.Common.Response;
 using Dafy.OnlineTran.Common.Response.App;
 using Dafy.OnlineTran.IService.App;
+using QRCoder;
 using Senparc.Weixin;
-using Senparc.Weixin.MP;
+using Senparc.Weixin.Exceptions;
 using Senparc.Weixin.MP.AdvancedAPIs;
 using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
+using Senparc.Weixin.MP.CommonAPIs;
+using Senparc.Weixin.MP.Entities;
 using Senparc.Weixin.MP.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 
@@ -26,9 +35,44 @@ namespace Dafy.OnlineTran.Api.Controllers.App
         private readonly string _appSecret = ConfigurationManager.AppSettings["WXAppSecret"];
         private readonly string _httpUrl = ConfigurationManager.AppSettings["HttpUrl"];
         private string _shareUrl= ConfigurationManager.AppSettings["ShareUrl"];
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger("AppHomeController");
         public AppHomeController(IHomeService homeService)
         {
             _homeService = homeService;
+        }
+        /// <summary>
+        /// 生成二维码
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [AllowAnonymous]
+        public HttpResponseMessage GetUserQrCode()
+        {
+            using (var ms = new MemoryStream())
+            using (var bitmap =GetQrCode())
+            {
+                bitmap.Save(ms, ImageFormat.Jpeg);
+                ms.Seek(0, SeekOrigin.Begin);
+
+                var resp = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new ByteArrayContent(ms.ToArray())
+                };
+                resp.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
+                return resp;
+            }
+        }
+        private Bitmap GetQrCode()
+        {
+            var userIdStr = string.IsNullOrEmpty(this.User.Identity.Name) ? DESEncrypt.Encrypt("0") : DESEncrypt.Encrypt(this.User.Identity.Name);
+            _shareUrl = string.Format(@_shareUrl, userIdStr).Replace("&amp;", "&");
+
+            using (var qrGen = new QRCodeGenerator())
+            using (var qrData = qrGen.CreateQrCode(_shareUrl, QRCodeGenerator.ECCLevel.Q))
+            using (var qrCode = new QRCode(qrData))
+            {
+                return qrCode.GetGraphic(20);
+            }
         }
         /// <summary>
         ///  获取分享地址
@@ -62,6 +106,7 @@ namespace Dafy.OnlineTran.Api.Controllers.App
                 data=null,
                 message="认证失败!"
             };
+
             var appOAuthRS = new AppOAuthRS();
 
 
@@ -85,9 +130,7 @@ namespace Dafy.OnlineTran.Api.Controllers.App
                 var pId = 0;
                 int.TryParse(rq.state, out pId);
 
-                OAuthAccessTokenResult oAuthResult = null;
-
-                oAuthResult = OAuthApi.GetAccessToken(_appId, _appSecret, rq.code);
+                var oAuthResult = OAuthApi.GetAccessToken(_appId, _appSecret, rq.code);
 
                 if (oAuthResult.errcode != ReturnCode.请求成功)
                 {
@@ -95,7 +138,9 @@ namespace Dafy.OnlineTran.Api.Controllers.App
                     result.state = 0;
                     return result;
                 }
-                OAuthUserInfo userInfo = OAuthApi.GetUserInfo(oAuthResult.access_token, oAuthResult.openid);
+                AccessTokenResult tokenResult = CommonApi.GetToken(_appId, _appSecret);
+                var userInfo = Senparc.Weixin.MP.AdvancedAPIs.UserApi.Info(tokenResult.access_token, oAuthResult.openid);
+                //OAuthUserInfo userInfo = OAuthApi.GetUserInfo(oAuthResult.access_token, oAuthResult.openid);
                 if (userInfo != null)
                 {
                     var model = new WeixinUserItemRS();
@@ -115,6 +160,14 @@ namespace Dafy.OnlineTran.Api.Controllers.App
                         appOAuthRS.name = userInfo.nickname;
                         appOAuthRS.accessToken = accessToken;
                         appOAuthRS.uId = user.Id;
+                        if (userInfo.subscribe == 0)
+                        {
+                            appOAuthRS.isFollow = 0;
+                        }
+                        else
+                        {
+                            userInfo.subscribe = 1;
+                        }
 
                         result.state = 1;
                         result.message = "认证成功!";
