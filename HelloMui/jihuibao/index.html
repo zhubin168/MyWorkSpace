@@ -13,6 +13,8 @@
 		<meta name="description" content="机会宝——上市公司和机构投资者的线上线下交流平台，下载机会宝APP，约调研、发路演、看直播，还可音视频互动参会。机会宝APP，让您随时随地把握投资机会！ ">
 		<link rel="shortcut icon" href="images/favicon.ico" />
 		<title>精彩活动</title>
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
 		<link href="css/font_499798_el69oakxp83t0529.css" rel="stylesheet" />
 		<link href="css/example.css?0.0.17.0" rel="stylesheet" />
 		<link href="css/mobile.min.css?0.0.17.0" rel="stylesheet" />
@@ -24,25 +26,57 @@
 		<!-- 内容 -->
 		<div id="contentBody">
 			<div class="content">
-				<div class="swiper-container swiper-container-horizontal swiper-container-ios">
-					<div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-750px, 0px, 0px);">
-						<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="2" style="width: 375px;">
-							<a href="http://172.22.124.122:82/at/SvDetail/1339053866"><img src="images/default.png" alt="23" onerror="this.src='images/default.png'"></a>
+				<div id="slider" class="mui-slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img src="../images/yuantiao.jpg">
+								<p class="mui-slider-title">静静看这世界</p>
+							</a>
 						</div>
-						<div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" style="width: 375px;">
-							<a href="http://172.22.124.122:82/app/waiting/1506245692/1"><img src="http://172.22.124.122:82/Uploads/MobileBanner/2018_04_25-10_15_16-955-859.jpg" alt="【机构交流】云南锗业（002428）实地调研" onerror="this.src='images/default.png'"></a>
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/shuijiao.jpg">
+								<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+							</a>
 						</div>
-						<div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="width: 375px;">
-							<a href="http://172.22.124.122:82/app/waiting/1339053866/2"><img src="images/default.png" alt="512峰会直播" onerror="this.src='images/default.png'"></a>
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/muwu.jpg">
+								<p class="mui-slider-title">想要一间这样的木屋，静静的喝咖啡</p>
+							</a>
 						</div>
-						<div class="swiper-slide swiper-slide-next" data-swiper-slide-index="2" style="width: 375px;">
-							<a href="http://172.22.124.122:82/at/SvDetail/1339053866"><img src="images/default.png" alt="23" onerror="this.src='images/default.png'"></a>
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/cbd.jpg">
+								<p class="mui-slider-title">Color of SIP CBD</p>
+							</a>
 						</div>
-						<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="0" style="width: 375px;">
-							<a href="http://172.22.124.122:82/app/waiting/1506245692/1"><img src="http://172.22.124.122:82/Uploads/MobileBanner/2018_04_25-10_15_16-955-859.jpg" alt="【机构交流】云南锗业（002428）实地调研" onerror="this.src='images/default.png'"></a>
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/yuantiao.jpg">
+								<p class="mui-slider-title">静静看这世界</p>
+							</a>
+						</div>
+						<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img src="../images/shuijiao.jpg">
+								<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+							</a>
 						</div>
 					</div>
-					<div class="swiper-pagination swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span></div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+					<div class="mui-slider-indicator mui-text-right">
+						<div class="mui-indicator mui-active"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+					</div>
+
+					<div class="swiper-pagination swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+						<span class="swiper-pagination-bullet">				
+					</span></div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
 				<div id="mainContent">
 					<div id="searchBar" onclick="window.location.href='/search/search'" class="weui-search-bar">
 						<form class="weui-search-bar__form">
@@ -322,10 +356,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="weui-tabbar jhb-tabbar-menu"><a href="javascript:void 0" class="weui-tabbar__item weui-bar__item_on"><span style="display: inline-block; position: relative;"><i class="iconfont icon-shouyetubiaohuise"></i></span> <p class="weui-tabbar__label">精彩活动</p></a>
-				<a href="watchunit.html" class="weui-tabbar__item"><span style="display: inline-block; position: relative;"><i class="iconfont icon-zixuanmorentubiaoweixuan1"></i></span> <p class="weui-tabbar__label">我的自选</p></a>
+			<div class="weui-tabbar jhb-tabbar-menu">
+				<a href="javascript:void 0" class="weui-tabbar__item weui-bar__item_on">
+					<span style="display: inline-block; position: relative;"><i class="iconfont icon-shouyetubiaohuise"></i></span> 
+				<p class="weui-tabbar__label" style="margin-bottom: 0px">精彩活动</p></a>
+				<a href="watchunit.html" class="weui-tabbar__item">
+					<span style="display: inline-block; position: relative;">
+						<i class="iconfont icon-zixuanmorentubiaoweixuan1"></i></span> 
+						<p class="weui-tabbar__label"  style="margin-bottom: 0px">我的自选</p></a>
 				<a href="user.html" class="weui-tabbar__item"><span style="display: inline-block; position: relative;"><i class="iconfont icon-wodetubiaohuise"></i></span>
-					<p class="weui-tabbar__label">我的</p>
+					<p class="weui-tabbar__label" style="margin-bottom: 0px">我的</p>
 				</a>
 			</div>
 		</div>
@@ -335,5 +375,26 @@
 		<input type="hidden" id="wxShareUrl">
 
 	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		var slider = mui("#slider");
+		slider.slider({
+			interval: 3000
+		});
+//		document.getElementById("switch").addEventListener('toggle', function(e) {
+//			if (e.detail.isActive) {
+//				slider.slider({
+//					interval: 1000
+//				});
+//			} else {
+//				slider.slider({
+//					interval: 0
+//				});
+//			}
+//		});
+	</script>
 
 </html>
