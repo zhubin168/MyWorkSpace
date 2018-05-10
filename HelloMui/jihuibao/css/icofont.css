@@ -1,0 +1,107 @@
+﻿.weui-search-bar__cancel-btn {
+    color: #df3031;
+}
+/*底部悬浮*/
+.weui-tabbar__item .iconfont {
+    font-size: 23px;
+    line-height: 1;
+}
+
+.weui-bar__item_on .iconfont {
+    color: #DF3031;
+}
+/*首页二级菜单选项*/
+.weui-flex1 .weui-flex__item .iconfont {
+    font-size: 44px;
+    line-height: 1.1;
+}
+
+.icon-luyantiaoyan {
+    color: #8e8ef4;
+}
+
+.icon-dianhuahuiyi {
+    color: #ffa42f;
+}
+
+.icon-shipintiaoyan {
+    color: #4d9eef;
+}
+
+.icon-shendujiedu {
+    color: #ff5656;
+}
+
+.icon-sixianghui {
+    color: #f7b321;
+}
+/*首页我的预约*/
+.icon-guanbi {
+    font-size: 16px;
+    color: #a0a1a7;
+    line-height: 1;
+}
+/*我的界面图标*/
+.me-li .iconfont {
+    font-size: 25px;
+}
+
+.icon-wodeyuyue {
+    color: #4d9eee;
+}
+
+.icon-shimingrenzhengtubiao {
+    color: #f7b320;
+    font-size: 22px !important;
+}
+
+.icon-bangzhuyufankui {
+    color: #888888;
+}
+
+.icon-lianxiwomen {
+    color: #888888;
+}
+
+.icon-guanyuwomen {
+    color: #888888;
+}
+
+.icon-shezhi-fenxianggeihaoyou {
+    color: #888888;
+}
+/*详情页*/
+.icon-gouxuankuang {
+    font-size: 16px;
+    color: #df3031;
+}
+/*深度解读列表*/
+.yc-ico {
+    color: #df3031;
+    font-size: inherit;
+}
+
+.zz-ico {
+    color: #4d92c5;
+    font-size: inherit;
+}
+
+.icon-sousuo {
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+.icon-fabu {
+    color: #ff7200;
+    font-size: 35px !important;
+}
+
+.icon-yinshipinjiaoliu {
+    color: #ff7200;
+    font-size: 35px !important;
+}
+
+.icon-gengduo {
+    color: #ff7200;
+    font-size: 35px !important;
+}

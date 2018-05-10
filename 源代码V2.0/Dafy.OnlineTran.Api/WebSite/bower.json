@@ -1,9 +1,0 @@
-{
-  "name": "Hellobower",
-  "private": "true",
-  "devDependencies": {},
-  "dependencies": {
-    "gentelella": "^1.3.0",
-    "angular-bootstrap-confirm": "^2.4.1"
-  }
-}

@@ -1,0 +1,74 @@
+﻿.over-sm {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000000;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+    z-index: 9;
+}
+.over-info {
+    padding: 5% 5% 8% 5%;
+    position: fixed;
+    width: 80%;
+    left: 0;
+right: 0;
+margin:0 auto;
+    background: #ffffff;
+    top: 25%;
+    z-index: 99;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 590px;
+}
+.over-info .close-limit {
+    float: right;
+    width: 20px;
+}
+.over-info .img-limit {
+    width:40%;
+    max-width: 192px;
+}
+.over-info .num-limit .limit-title{
+      font-size: 18px;
+    color: #333333;
+    margin-top: 15px;
+}
+.over-info .num-limit .limit-info{
+      font-size: 16px;
+    color: #666666;
+    line-height: 28px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.over-info .num-limit .btn-limit{
+       width: 75%;
+            max-width: 300px;
+            font-size: 16px;
+            color: #ffffff;
+            height: 44px;
+            border-radius: 10px;
+            border: none;
+             background: #ff4a31;
+}
+@media screen and (min-width:750px) {
+    .sm-con .sm-title {
+        padding: 30px 46px;
+    }
+
+    .sm-con .sm-info {
+        padding: 15px 20px;
+    }
+
+    .sm-con .sm-title .title-text {
+        padding: 0 30px;
+    }
+}
+
+.only-use-in-app-pop .over-info .num-limit .btn-limit {
+    margin-top: 20px;
+}
