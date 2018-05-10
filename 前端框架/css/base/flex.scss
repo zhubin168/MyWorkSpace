@@ -1,0 +1,87 @@
+﻿/* 容器属性
+-------------------------------------------*/
+@mixin flex() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+// 主轴对齐方式
+// start: flex-start
+// center: center
+// between: space-between
+// end: flex-end
+@mixin justify-content($val) {
+    $oldVal: $val;
+
+    @if $val == flex-start {
+        $oldVal: start;
+    }
+    @else if $val == flex-end {
+        $oldVal: end;
+    }
+    @else if $val == space-between {
+        $oldVal: justify;
+    }
+
+    -webkit-box-pack: $oldVal;
+    -webkit-justify-content: $val;
+    justify-content: $val;
+}
+
+// 交叉轴对齐方式
+// start: start flex-start
+// center: center
+// end: end flex-end
+// baseline: baseline
+// stretch: stretch
+@mixin align-items($val) {
+    $oldVal: $val;
+
+    @if $val == flex-start {
+        $oldVal: start;
+    }
+    @else if $val == flex-end {
+        $oldVal: end;
+    }
+
+    -webkit-box-align: $oldVal;
+    -webkit-align-items: $val;
+    align-items: $val;
+}
+
+// 主轴方向
+@mixin flex-direction($val) {
+    $oldVal: $val;
+
+    @if $val == row {
+        $oldVal: horizontal;
+    }
+    @else if $val == column {
+        $oldVal: vertical;
+    }
+
+    -webkit-box-orient: $oldVal;
+    -webkit-flex-direction: $val;
+    flex-direction: $val;
+}
+
+
+/** 项目属性
+-------------------------------------------*/
+// 有剩余空间是否放大
+@mixin flex-grow($val) {
+    -webkit-box-flex: $val;
+    -webkit-flex-grow: $val;
+    flex-grow: $val;
+}
+
+// 缩小：默认1（如果空间不足则会缩小，值为0不缩小）
+@mixin flex-shrink($val) {
+    $oldVal: $val * 0.1;
+
+    -moz-box-flex: $oldVal; /*Firefox*/
+    -webkit-box-flex: $oldVal; /*Safari,Opera,Chrome*/
+    box-flex: $oldVal;
+    flex-shrink: $val;
+}
